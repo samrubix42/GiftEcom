@@ -28,6 +28,20 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
+            (object)[
+                'title' => 'Categories',
+                'icon' => 'ti ti-list-details',
+                'url' => route('admin.categories'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
+            (object)[
+                'title' => 'Brands',
+                'icon' => 'ti ti-tags',
+                'url' => route('admin.brands'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
            
         ]);
         return $menu;

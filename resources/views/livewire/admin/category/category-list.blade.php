@@ -73,9 +73,9 @@
                         <td>{{ $cat->name }}</td>
                         <td>
                             @if($child->is_active)
-                            <span class="badge bg-success">Active</span>
+                            <span class="badge bg-success-lt">Active</span>
                             @else
-                            <span class="badge bg-secondary">Inactive</span>
+                            <span class="badge bg-secondary-lt">Inactive</span>
                             @endif
                         </td>
                         <td class="text-end d-flex justify-content-end">
