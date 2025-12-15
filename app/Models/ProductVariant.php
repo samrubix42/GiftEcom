@@ -20,6 +20,11 @@ class ProductVariant extends Model
         return $this->hasMany(VariantAttribute::class);
     }
 
+    public function variantAttributes()
+    {
+        return $this->hasMany(VariantAttribute::class, 'product_variant_id');
+    }
+
     public function images()
     {
         return $this->hasMany(ProductImage::class);

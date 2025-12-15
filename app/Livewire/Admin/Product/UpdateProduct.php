@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Attribute;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UpdateProduct extends Component
 {
@@ -40,6 +41,7 @@ class UpdateProduct extends Component
     public $images = [];
     public $existingImages = [];
     public $imagesToDelete = [];
+    public $variantImagesToDelete = [];
 
     // Variant Management
     public $variants = [];
@@ -53,7 +55,7 @@ class UpdateProduct extends Component
     public function mount($id)
     {
         $this->productId = $id;
-        $this->product = Product::with(['category', 'brand', 'variants.attributes', 'images'])->findOrFail($id);
+        $this->product = Product::with(['category', 'brand', 'variants.variantAttributes', 'images'])->findOrFail($id);
         
         // Load product data
         $this->name = $this->product->name;
@@ -76,7 +78,7 @@ class UpdateProduct extends Component
         if ($this->has_variants) {
             foreach ($this->product->variants as $variant) {
                 $variantAttrs = [];
-                foreach ($variant->attributes as $attr) {
+                foreach ($variant->variantAttributes as $attr) {
                     $variantAttrs[$attr->attribute_id] = $attr->attribute_value_id;
                 }
                 
@@ -88,6 +90,8 @@ class UpdateProduct extends Component
                     'stock' => $variant->stock,
                     'status' => $variant->status,
                     'variantAttributes' => $variantAttrs,
+                    'existingImages' => $variant->images->toArray(),
+                    'newImages' => [],
                 ];
             }
         } else {
@@ -117,8 +121,28 @@ class UpdateProduct extends Component
             'sale_price' => '',
             'stock' => '',
             'status' => true,
-            'variantAttributes' => []
+            'variantAttributes' => [],
+            'existingImages' => [],
+            'newImages' => [],
         ];
+    }
+
+    public function deleteVariantImage($variantIndex, $imageId)
+    {
+        if (!isset($this->variantImagesToDelete[$variantIndex])) {
+            $this->variantImagesToDelete[$variantIndex] = [];
+        }
+        $this->variantImagesToDelete[$variantIndex][] = $imageId;
+        
+        // Remove from display
+        if (isset($this->variants[$variantIndex]['existingImages'])) {
+            $this->variants[$variantIndex]['existingImages'] = array_filter(
+                $this->variants[$variantIndex]['existingImages'], 
+                function($img) use ($imageId) {
+                    return $img['id'] != $imageId;
+                }
+            );
+        }
     }
 
     public function removeVariant($index)
@@ -136,6 +160,56 @@ class UpdateProduct extends Component
         $this->existingImages = array_filter($this->existingImages, function($img) use ($imageId) {
             return $img['id'] != $imageId;
         });
+    }
+
+    public function setPrimaryImage($imageId)
+    {
+        // Set all images to not primary
+        foreach ($this->existingImages as &$img) {
+            $img['is_primary'] = false;
+        }
+        
+        // Set selected image as primary
+        foreach ($this->existingImages as &$img) {
+            if ($img['id'] == $imageId) {
+                $img['is_primary'] = true;
+                break;
+            }
+        }
+        
+        // Update in database immediately
+        ProductImage::where('product_id', $this->productId)->update(['is_primary' => false]);
+        ProductImage::where('id', $imageId)->update(['is_primary' => true]);
+        
+        session()->flash('message', 'Primary image updated successfully!');
+    }
+
+    public function duplicateVariant($index)
+    {
+        if (isset($this->variants[$index])) {
+            $duplicate = $this->variants[$index];
+            $duplicate['id'] = null; // Mark as new
+            $duplicate['sku'] = 'VAR-' . strtoupper(Str::random(8));
+            $this->variants[] = $duplicate;
+        }
+    }
+
+    public function getColorForVariant($variantIndex)
+    {
+        if (!isset($this->variants[$variantIndex]['variantAttributes'])) {
+            return null;
+        }
+
+        foreach ($this->productAttributes as $attribute) {
+            if (strtolower($attribute->name) === 'color') {
+                $valueId = $this->variants[$variantIndex]['variantAttributes'][$attribute->id] ?? null;
+                if ($valueId) {
+                    $value = $attribute->values->firstWhere('id', $valueId);
+                    return $value ? $value->value : null;
+                }
+            }
+        }
+        return null;
     }
 
     public function update()
@@ -163,6 +237,8 @@ class UpdateProduct extends Component
         }
 
         try {
+            DB::beginTransaction();
+            
             // Update product
             $this->product->update([
                 'name' => $this->name,
@@ -195,7 +271,7 @@ class UpdateProduct extends Component
                         ]);
 
                         // Update attributes
-                        $variant->attributes()->delete();
+                        $variant->variantAttributes()->delete();
                     } else {
                         // Create new variant
                         $variant = $this->product->variants()->create([
@@ -211,9 +287,24 @@ class UpdateProduct extends Component
                     if (isset($variantData['variantAttributes']) && is_array($variantData['variantAttributes'])) {
                         foreach ($variantData['variantAttributes'] as $attributeId => $valueId) {
                             if ($valueId) {
-                                $variant->attributes()->create([
+                                $variant->variantAttributes()->create([
                                     'attribute_id' => $attributeId,
                                     'attribute_value_id' => $valueId,
+                                ]);
+                            }
+                        }
+                    }
+
+                    // Handle new variant images
+                    if (isset($variantData['newImages']) && is_array($variantData['newImages'])) {
+                        $currentMaxOrder = $variant->images()->max('sort_order') ?? -1;
+                        foreach ($variantData['newImages'] as $imgIndex => $image) {
+                            if ($image) {
+                                $path = $image->store('products/variants', 'public');
+                                $variant->images()->create([
+                                    'image_path' => $path,
+                                    'is_primary' => $imgIndex === 0,
+                                    'sort_order' => $currentMaxOrder + $imgIndex + 1,
                                 ]);
                             }
                         }
@@ -232,12 +323,19 @@ class UpdateProduct extends Component
                 }
             }
 
-            // Delete marked images
+            // Delete marked product images
             if (!empty($this->imagesToDelete)) {
                 ProductImage::whereIn('id', $this->imagesToDelete)->delete();
             }
 
-            // Handle new image uploads
+            // Delete marked variant images
+            if (!empty($this->variantImagesToDelete)) {
+                foreach ($this->variantImagesToDelete as $imageIds) {
+                    ProductImage::whereIn('id', $imageIds)->delete();
+                }
+            }
+
+            // Handle new product image uploads
             if ($this->images) {
                 $currentMaxOrder = $this->product->images()->max('sort_order') ?? -1;
                 foreach ($this->images as $index => $image) {
@@ -250,11 +348,17 @@ class UpdateProduct extends Component
                 }
             }
 
+            DB::commit();
             session()->flash('message', 'Product updated successfully!');
             return redirect()->route('admin.products.index');
 
         } catch (\Exception $e) {
+            DB::rollBack();
             session()->flash('error', 'Error updating product: ' . $e->getMessage());
+            \Log::error('Product update failed: ' . $e->getMessage(), [
+                'product_id' => $this->productId,
+                'trace' => $e->getTraceAsString()
+            ]);
         }
     }
 
