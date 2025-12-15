@@ -42,6 +42,13 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
+            (object)[
+                'title' => 'Products',
+                'icon' => 'ti ti-package',
+                'url' => route('admin.products.index'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
            
         ]);
         return $menu;
