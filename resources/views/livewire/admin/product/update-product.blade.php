@@ -1,4 +1,5 @@
-<div class="page-wrapper">
+<div>
+    <div class="page-wrapper">
     <div class="page-header d-print-none">
         <div class="container-xl">
             <div class="row g-2 align-items-center">
@@ -203,7 +204,7 @@
                                                     <div class="col-md-6 mb-3">
                                                         <label class="form-label required">Price</label>
                                                         <div class="input-group">
-                                                            <span class="input-group-text">$</span>
+                                                            <span class="input-group-text">₹</span>
                                                             <input type="number" step="0.01" class="form-control"
                                                                 wire:model="variants.{{ $index }}.price" min="0">
                                                         </div>
@@ -214,7 +215,7 @@
                                                     <div class="col-md-6 mb-3">
                                                         <label class="form-label">Sale Price</label>
                                                         <div class="input-group">
-                                                            <span class="input-group-text">$</span>
+                                                            <span class="input-group-text">₹</span>
                                                             <input type="number" step="0.01" class="form-control"
                                                                 wire:model="variants.{{ $index }}.sale_price" min="0">
                                                         </div>
@@ -305,8 +306,7 @@
                                                                         class="img-fluid rounded" alt="Variant">
                                                                     <button type="button"
                                                                         class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1"
-                                                                        wire:click="deleteVariantImage({{ $index }}, {{ $image['id'] }})"
-                                                                        onclick="return confirm('Delete this image?')">
+                                                                        wire:click="confirmDeleteVariantImage({{ $index }}, {{ $image['id'] }})">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                                             <line x1="18" y1="6" x2="6" y2="18" />
@@ -420,8 +420,7 @@
 
                                                         <button type="button"
                                                             class="btn btn-sm btn-outline-danger w-100 mt-1"
-                                                            wire:click="deleteImage({{ $image['id'] }})"
-                                                            onclick="return confirm('Are you sure you want to delete this image?')"
+                                                            wire:click="confirmDeleteImage({{ $image['id'] }})"
                                                             title="Delete image">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -632,4 +631,51 @@
             </form>
         </div>
     </div>
+
+    <!-- Delete Image Confirmation Modal -->
+    @if($showDeleteImageModal)
+    <div class="modal fade show" id="deleteImageModal" tabindex="-1" style="display: block;" 
+         x-data="{ modalInstance: null }" 
+         x-init="
+            modalInstance = new bootstrap.Modal($el);
+            modalInstance.show();
+         "
+         @hidden.bs.modal="
+            $wire.resetImageDeletion();
+            document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('overflow');
+            document.body.style.removeProperty('padding-right');
+         ">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 9v4"></path>
+                        <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z"></path>
+                        <path d="M12 16h.01"></path>
+                    </svg>
+                    <h3>Delete Image?</h3>
+                    <div class="text-muted">Are you sure you want to delete this image? This will be permanent when you save the product.</div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn w-100" data-bs-dismiss="modal" wire:click="resetImageDeletion">Cancel</button>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-danger w-100" data-bs-dismiss="modal" wire:click="{{ $deleteImageType === 'variant' ? 'deleteVariantImage' : 'deleteImage' }}">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+</div>
 </div>

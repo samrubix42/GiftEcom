@@ -47,6 +47,12 @@ class UpdateProduct extends Component
     public $variants = [];
     public $variantsToDelete = [];
 
+    // Image deletion confirmation
+    public $showDeleteImageModal = false;
+    public $imageToDelete = null;
+    public $variantIndexForImageDelete = null;
+    public $deleteImageType = null; // 'product' or 'variant'
+
     // Data for dropdowns
     public $categories = [];
     public $brands = [];
@@ -127,23 +133,43 @@ class UpdateProduct extends Component
         ];
     }
 
-    public function deleteVariantImage($variantIndex, $imageId)
+    public function confirmDeleteVariantImage($variantIndex, $imageId)
     {
-        if (!isset($this->variantImagesToDelete[$variantIndex])) {
-            $this->variantImagesToDelete[$variantIndex] = [];
+        $this->imageToDelete = $imageId;
+        $this->variantIndexForImageDelete = $variantIndex;
+        $this->deleteImageType = 'variant';
+        $this->showDeleteImageModal = true;
+    }
+
+    public function deleteVariantImage()
+    {
+        if ($this->imageToDelete && $this->deleteImageType === 'variant' && $this->variantIndexForImageDelete !== null) {
+            if (!isset($this->variantImagesToDelete[$this->variantIndexForImageDelete])) {
+                $this->variantImagesToDelete[$this->variantIndexForImageDelete] = [];
+            }
+            $this->variantImagesToDelete[$this->variantIndexForImageDelete][] = $this->imageToDelete;
+            
+            // Remove from display
+            if (isset($this->variants[$this->variantIndexForImageDelete]['existingImages'])) {
+                $this->variants[$this->variantIndexForImageDelete]['existingImages'] = array_filter(
+                    $this->variants[$this->variantIndexForImageDelete]['existingImages'], 
+                    function($img) {
+                        return $img['id'] != $this->imageToDelete;
+                    }
+                );
+            }
+            $this->dispatch('toast', type: 'info', message: 'Variant image marked for deletion');
+            $this->showDeleteImageModal = false;
+            $this->resetImageDeletion();
         }
-        $this->variantImagesToDelete[$variantIndex][] = $imageId;
-        
-        // Remove from display
-        if (isset($this->variants[$variantIndex]['existingImages'])) {
-            $this->variants[$variantIndex]['existingImages'] = array_filter(
-                $this->variants[$variantIndex]['existingImages'], 
-                function($img) use ($imageId) {
-                    return $img['id'] != $imageId;
-                }
-            );
-        }
-        $this->dispatch('toast', type: 'info', message: 'Variant image marked for deletion');
+    }
+
+    public function resetImageDeletion()
+    {
+        $this->showDeleteImageModal = false;
+        $this->imageToDelete = null;
+        $this->variantIndexForImageDelete = null;
+        $this->deleteImageType = null;
     }
 
     public function removeVariant($index)
@@ -156,13 +182,24 @@ class UpdateProduct extends Component
         $this->dispatch('toast', type: 'info', message: 'Variant marked for deletion');
     }
 
-    public function deleteImage($imageId)
+    public function confirmDeleteImage($imageId)
     {
-        $this->imagesToDelete[] = $imageId;
-        $this->existingImages = array_filter($this->existingImages, function($img) use ($imageId) {
-            return $img['id'] != $imageId;
-        });
-        $this->dispatch('toast', type: 'info', message: 'Image marked for deletion');
+        $this->imageToDelete = $imageId;
+        $this->deleteImageType = 'product';
+        $this->showDeleteImageModal = true;
+    }
+
+    public function deleteImage()
+    {
+        if ($this->imageToDelete && $this->deleteImageType === 'product') {
+            $this->imagesToDelete[] = $this->imageToDelete;
+            $this->existingImages = array_filter($this->existingImages, function($img) {
+                return $img['id'] != $this->imageToDelete;
+            });
+            $this->dispatch('toast', type: 'info', message: 'Image marked for deletion');
+            $this->showDeleteImageModal = false;
+            $this->resetImageDeletion();
+        }
     }
 
     public function setPrimaryImage($imageId)
