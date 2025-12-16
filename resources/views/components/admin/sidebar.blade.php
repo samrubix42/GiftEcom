@@ -52,7 +52,7 @@
                     </ul>
                     @else
                     {{-- Single Menu Item --}}
-                    <a href="{{ $menu->url }}" class="nav-link {{ request()->is($menu->url . '*') ? 'active' : '' }}">
+                    <a wire:navigate href="{{ $menu->url }}" class="nav-link {{ request()->is($menu->url . '*') ? 'active' : '' }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="{{ $menu->icon ?? '' }} h2"></i>
                         </span>
