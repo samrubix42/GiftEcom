@@ -88,7 +88,7 @@ class UpdateProduct extends Component
                     'price' => $variant->price,
                     'sale_price' => $variant->sale_price,
                     'stock' => $variant->stock,
-                    'status' => $variant->status,
+                    'status' => (bool)$variant->status,
                     'variantAttributes' => $variantAttrs,
                     'existingImages' => $variant->images->toArray(),
                     'newImages' => [],
@@ -267,7 +267,7 @@ class UpdateProduct extends Component
                             'price' => $variantData['price'],
                             'sale_price' => $variantData['sale_price'] ?? null,
                             'stock' => $variantData['stock'],
-                            'status' => $variantData['status'] ?? true,
+                            'status' => isset($variantData['status']) ? (bool)$variantData['status'] : false,
                         ]);
 
                         // Update attributes
@@ -279,7 +279,7 @@ class UpdateProduct extends Component
                             'price' => $variantData['price'],
                             'sale_price' => $variantData['sale_price'] ?? null,
                             'stock' => $variantData['stock'],
-                            'status' => $variantData['status'] ?? true,
+                            'status' => isset($variantData['status']) ? (bool)$variantData['status'] : true,
                         ]);
                     }
 

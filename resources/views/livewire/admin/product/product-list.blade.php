@@ -113,9 +113,9 @@
                                     </td>
                                     <td>
                                         @if($product->has_variants)
-                                            <span class="badge bg-info">Multi-Variant</span>
+                                            <span class="badge bg-info-lt">Multi-Variant</span>
                                         @else
-                                            <span class="badge bg-secondary">Simple</span>
+                                            <span class="badge bg-secondary-lt">Simple</span>
                                         @endif
                                     </td>
                                     <td>

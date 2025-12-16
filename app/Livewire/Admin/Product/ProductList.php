@@ -12,6 +12,7 @@ use App\Models\Brand;
 class ProductList extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $search = '';
     public $categoryFilter = '';
@@ -60,11 +61,11 @@ class ProductList extends Component
             try {
                 $product = Product::findOrFail($this->deleteId);
                 $product->delete();
-                
-                session()->flash('message', 'Product deleted successfully!');
+
+                $this->dispatch('toast', type: 'success', message: 'Product deleted successfully.');
                 $this->deleteId = null;
             } catch (\Exception $e) {
-                session()->flash('error', 'Error deleting product: ' . $e->getMessage());
+                $this->dispatch('toast', type: 'error', message: 'Error deleting product: ' . $e->getMessage());
             }
         }
     }
@@ -75,10 +76,10 @@ class ProductList extends Component
             $product = Product::findOrFail($id);
             $product->status = !$product->status;
             $product->save();
-            
-            session()->flash('message', 'Product status updated!');
+
+            $this->dispatch('toast', type: 'success', message: 'Product status updated!');
         } catch (\Exception $e) {
-            session()->flash('error', 'Error updating status: ' . $e->getMessage());
+            $this->dispatch('toast', type: 'error', message: 'Error updating status: ' . $e->getMessage());
         }
     }
 
@@ -94,7 +95,7 @@ class ProductList extends Component
         $query = Product::with(['category', 'brand', 'variants'])
             ->when($this->search, function ($q) {
                 $q->where('name', 'like', '%' . $this->search . '%')
-                  ->orWhere('slug', 'like', '%' . $this->search . '%');
+                    ->orWhere('slug', 'like', '%' . $this->search . '%');
             })
             ->when($this->categoryFilter, function ($q) {
                 $q->where('category_id', $this->categoryFilter);
