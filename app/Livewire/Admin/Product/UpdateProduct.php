@@ -143,6 +143,7 @@ class UpdateProduct extends Component
                 }
             );
         }
+        $this->dispatch('toast', type: 'info', message: 'Variant image marked for deletion');
     }
 
     public function removeVariant($index)
@@ -152,6 +153,7 @@ class UpdateProduct extends Component
         }
         unset($this->variants[$index]);
         $this->variants = array_values($this->variants);
+        $this->dispatch('toast', type: 'info', message: 'Variant marked for deletion');
     }
 
     public function deleteImage($imageId)
@@ -160,6 +162,7 @@ class UpdateProduct extends Component
         $this->existingImages = array_filter($this->existingImages, function($img) use ($imageId) {
             return $img['id'] != $imageId;
         });
+        $this->dispatch('toast', type: 'info', message: 'Image marked for deletion');
     }
 
     public function setPrimaryImage($imageId)
@@ -181,7 +184,7 @@ class UpdateProduct extends Component
         ProductImage::where('product_id', $this->productId)->update(['is_primary' => false]);
         ProductImage::where('id', $imageId)->update(['is_primary' => true]);
         
-        session()->flash('message', 'Primary image updated successfully!');
+        $this->dispatch('toast', type: 'success', message: 'Primary image updated successfully!');
     }
 
     public function duplicateVariant($index)
@@ -191,6 +194,7 @@ class UpdateProduct extends Component
             $duplicate['id'] = null; // Mark as new
             $duplicate['sku'] = 'VAR-' . strtoupper(Str::random(8));
             $this->variants[] = $duplicate;
+            $this->dispatch('toast', type: 'success', message: 'Variant duplicated successfully!');
         }
     }
 
@@ -349,12 +353,12 @@ class UpdateProduct extends Component
             }
 
             DB::commit();
-            session()->flash('message', 'Product updated successfully!');
+            $this->dispatch('toast', type: 'success', message: 'Product updated successfully!');
             return redirect()->route('admin.products.index');
 
         } catch (\Exception $e) {
             DB::rollBack();
-            session()->flash('error', 'Error updating product: ' . $e->getMessage());
+            $this->dispatch('toast', type: 'error', message: 'Error updating product: ' . $e->getMessage());
             \Log::error('Product update failed: ' . $e->getMessage(), [
                 'product_id' => $this->productId,
                 'trace' => $e->getTraceAsString()

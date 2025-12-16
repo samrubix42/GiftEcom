@@ -362,25 +362,26 @@
                                         </div>
                                         @endif
                                     </div>
-                                    @endforeach
-                                    @else
-                                    <div class="empty">
-                                        <div class="empty-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <rect x="4" y="4" width="6" height="6" rx="1" />
-                                                <rect x="4" y="14" width="6" height="6" rx="1" />
-                                                <rect x="14" y="4" width="6" height="6" rx="1" />
-                                                <rect x="14" y="14" width="6" height="6" rx="1" />
-                                            </svg>
-                                        </div>
-                                        <p class="empty-title">No variants added yet</p>
-                                        <p class="empty-subtitle text-muted">Click "Add Variant" to create different versions of this product</p>
-                                    </div>
-                                    @endif
                                 </div>
+                                @endforeach
+                                @else
+                                <div class="empty">
+                                    <div class="empty-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <rect x="4" y="4" width="6" height="6" rx="1" />
+                                            <rect x="4" y="14" width="6" height="6" rx="1" />
+                                            <rect x="14" y="4" width="6" height="6" rx="1" />
+                                            <rect x="14" y="14" width="6" height="6" rx="1" />
+                                        </svg>
+                                    </div>
+                                    <p class="empty-title">No variants added yet</p>
+                                    <p class="empty-subtitle text-muted">Click "Add Variant" to create different versions of this product</p>
+                                </div>
+                                @endif
                             </div>
-                            @endif
+                        </div>
+                        @endif
 
                             <!-- Images -->
                             <div class="card mb-3">
@@ -505,10 +506,10 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
+                    </div>
 
-                        <!-- Sidebar -->
-                        <div class="col-lg-4">
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
                             <!-- Quick Actions -->
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -627,6 +628,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>
