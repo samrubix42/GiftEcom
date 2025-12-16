@@ -158,10 +158,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <strong>${{ number_format($variant['price'], 2) }}</strong>
+                                            <strong>₹{{ number_format($variant['price'], 2) }}</strong>
                                             @if(isset($variant['sale_price']) && $variant['sale_price'])
                                                 <br>
-                                                <small class="text-danger">Sale: ${{ number_format($variant['sale_price'], 2) }}</small>
+                                                <small class="text-danger">Sale: ₹{{ number_format($variant['sale_price'], 2) }}</small>
                                             @endif
                                         </td>
                                         <td>

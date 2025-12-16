@@ -117,9 +117,9 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="form-label required">Price</label>
                                                     <div class="input-group">
-                                                        <span class="input-group-text">$</span>
+                                                        <span class="input-group-text">₹</span>
                                                         <input type="number" step="0.01" class="form-control" 
-                                                               wire:model="variants.{{ $index }}.price" min="0">
+                                                               wire:model.live="variants.{{ $index }}.price" min="0">
                                                     </div>
                                                     @error("variants.$index.price") 
                                                         <div class="text-danger small mt-1">{{ $message }}</div> 
@@ -128,9 +128,9 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="form-label">Sale Price</label>
                                                     <div class="input-group">
-                                                        <span class="input-group-text">$</span>
+                                                        <span class="input-group-text">₹</span>
                                                         <input type="number" step="0.01" class="form-control" 
-                                                               wire:model="variants.{{ $index }}.sale_price" min="0">
+                                                               wire:model.live="variants.{{ $index }}.sale_price" min="0">
                                                     </div>
                                                 </div>
                                             </div>
