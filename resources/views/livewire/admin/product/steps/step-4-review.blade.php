@@ -32,7 +32,7 @@
                                             @php
                                                 $category = $categories->firstWhere('id', $category_id);
                                             @endphp
-                                            <span class="badge bg-blue">{{ $category->name ?? 'N/A' }}</span>
+                                            <span class="badge bg-blue-lt">{{ $category->name ?? 'N/A' }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -48,9 +48,9 @@
                                         <td class="text-muted"><strong>Product Type</strong></td>
                                         <td>
                                             @if($has_variants)
-                                                <span class="badge bg-purple">Product with Variants</span>
+                                                <span class="badge bg-purple-lt">Product with Variants</span>
                                             @else
-                                                <span class="badge bg-green">Simple Product</span>
+                                                <span class="badge bg-green-lt">Simple Product</span>
                                             @endif
                                         </td>
                                     </tr>
@@ -58,9 +58,9 @@
                                         <td class="text-muted"><strong>Status</strong></td>
                                         <td>
                                             @if($status)
-                                                <span class="badge bg-success">Active</span>
+                                                <span class="badge bg-success-lt">Active</span>
                                             @else
-                                                <span class="badge bg-secondary">Inactive</span>
+                                                <span class="badge bg-secondary-lt">Inactive</span>
                                             @endif
                                         </td>
                                     </tr>
@@ -84,14 +84,14 @@
                                     </tr>
                                     <tr>
                                         <td class="text-muted"><strong>Price</strong></td>
-                                        <td>${{ number_format($price, 2) }}</td>
+                                        <td>₹{{ number_format($price, 2) }}</td>
                                     </tr>
                                     @if($sale_price)
                                     <tr>
                                         <td class="text-muted"><strong>Sale Price</strong></td>
                                         <td>
-                                            <span class="text-danger"><strong>${{ number_format($sale_price, 2) }}</strong></span>
-                                            <span class="badge bg-red ms-2">
+                                            <span class="text-danger"><strong>₹{{ number_format($sale_price, 2) }}</strong></span>
+                                            <span class="badge bg-red-lt ms-2">
                                                 {{ number_format((($price - $sale_price) / $price) * 100, 0) }}% OFF
                                             </span>
                                         </td>
@@ -100,7 +100,7 @@
                                     <tr>
                                         <td class="text-muted"><strong>Stock</strong></td>
                                         <td>
-                                            <span class="badge {{ $stock > 0 ? 'bg-success' : 'bg-danger' }}">
+                                            <span class="badge {{ $stock > 0 ? 'bg-success-lt' : 'bg-danger-lt' }}">
                                                 {{ $stock }} units
                                             </span>
                                         </td>

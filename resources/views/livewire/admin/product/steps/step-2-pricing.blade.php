@@ -25,20 +25,19 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label required">Regular Price</label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text">₹</span>
                             <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" 
-                                   wire:model="price" placeholder="0.00" min="0">
+                                   wire:model.live="price" placeholder="0.00" min="0">
                         </div>
                         @error('price') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Sale Price</label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text">₹</span>
                             <input type="number" step="0.01" class="form-control @error('sale_price') is-invalid @enderror" 
-                                   wire:model="sale_price" placeholder="0.00" min="0">
+                                   wire:model.live="sale_price" placeholder="0.00" min="0">
                         </div>
-                        <small class="form-hint">Optional - leave empty if no sale</small>
                         @error('sale_price') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                     <div class="alert alert-info">
                         <strong>Discount:</strong> 
                         {{ number_format((($price - $sale_price) / $price) * 100, 0) }}% off
-                        (Save ${{ number_format($price - $sale_price, 2) }})
+                        (Save ₹{{ number_format($price - $sale_price, 2) }})
                     </div>
                 @endif
             </div>
