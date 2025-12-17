@@ -6,11 +6,10 @@ use App\Livewire\Admin\Dashboard\Dashboard;
 use App\Livewire\Admin\Product\AddProduct;
 use App\Livewire\Admin\Product\ProductList;
 use App\Livewire\Admin\Product\UpdateProduct;
+use App\Livewire\Public\Home\Home;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',Home::class)->name('home');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/categories', CategoryList::class)->name('categories');
