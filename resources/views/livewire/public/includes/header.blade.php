@@ -23,9 +23,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav"> 
                             <ul class="navbar-nav alt-font"> 
-                                <li class="nav-item"><a href="demo-jewellery-store.html" class="nav-link">Home</a></li>
-                                <li class="nav-item dropdown submenu">
-                                    <a href="demo-jewellery-store-shop.html" class="nav-link">Shop</a>
+                                <li  class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                                <li  class="nav-item dropdown submenu">
+                                    <a href="{{ route('shop') }}" class="nav-link">Shop</a>
                                     <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                     <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink1"> 
                                         <div class="d-lg-flex mega-menu m-auto flex-column">
@@ -98,7 +98,7 @@
                                     </div>
                                 </li> 
                                 <li class="nav-item dropdown submenu">
-                                    <a href="demo-jewellery-store-categories.html" class="nav-link">Categories</a>
+                                    <a href="{{ route('category') }}" class="nav-link">Categories</a>
                                     <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                     <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink2"> 
                                         <div class="mega-menu m-auto">
