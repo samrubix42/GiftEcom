@@ -61,109 +61,109 @@
     <!-- Slider Revolution add on files -->
     <script type='text/javascript' src='{{ asset('asset/revolution/revolution-addons/particles/js/revolution.addon.particles.min.js') }}?ver=1.0.3'></script>
     <!-- Slider's main "init" script -->
-         <script type="text/javascript">
-        /* https://learn.jquery.com/using-jquery-core/document-ready/ */
-        jQuery(document).ready(function() {
-
-            /* initialize the slider based on the Slider's ID attribute from the wrapper above */
-            jQuery('#jewellery-store-slider').show().revolution({
-                sliderType: "standard",
-                /* options are 'auto', 'fullwidth' or 'fullscreen' */
-                sliderLayout: 'fullscreen',
-                /* sets the Slider's default timeline */
-                delay: 9000,
-                /* options that disable autoplay */
-                stopLoop: "off",
-                stopAfterLoops: 0,
-                stopAtSlide: 1,
-                navigation: {
-
-                    keyboardNavigation: 'on',
-                    keyboard_direction: 'horizontal',
-                    mouseScrollNavigation: 'off',
-                    mouseScrollReverse: 'reverse',
-                    onHoverStop: 'off',
-                    touch: {
-                        touchenabled: 'on',
-                        touchOnDesktop: "on",
-                        swipe_threshold: 75,
-                        swipe_min_touches: 1,
-                        swipe_direction: 'horizontal',
-                        drag_block_vertical: true
-                    },
-                    arrows: {
-
-                        enable: true,
-                        style: 'hesperiden',
-                        tmp: '',
-                        rtl: false,
-                        hide_onleave: false,
-                        hide_onmobile: true,
-                        hide_under: 0,
-                        hide_over: 9999,
-                        hide_delay: 200,
-                        hide_delay_mobile: 1200,
-
-                        left: {
-                            container: 'slider',
-                            h_align: 'left',
-                            v_align: 'center',
-                            h_offset: 30,
-                            v_offset: 0
-                        },
-
-                        right: {
-                            container: 'slider',
-                            h_align: 'right',
-                            v_align: 'center',
-                            h_offset: 30,
-                            v_offset: 0
-                        }
-
-                    }
-                },
-                responsiveLevels: [1240, 1024, 778, 480],
-                /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
-                gridwidth: [1190, 1024, 778, 480],
-                /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
-                gridheight: [900, 920, 700, 650],
-                /* Lazy Load options are "all", "smart", "single" and "none" */
-                lazyType: "smart",
-                spinner: "spinner0",
-                parallax: {
-                    type: "mouse",
-                    origo: "slidercenter",
-                    speed: 1000,
-                    speedbg: 1500,
-                    speedls: 1000,
-                    levels: [3, 5, 8, 10, 12, 15, 35, 40, 45, 50, -50, -45, -40, -35, -30, -25],
-                    ddd_shadow: "on",
-                    ddd_bgfreeze: "off",
-                    ddd_overflow: "hidden",
-                    ddd_layer_overflow: "visible",
-                    ddd_z_correction: 40,
-                    disable_onmobile: 'on'
-                },
-                shadow: 0,
-                shuffle: "off",
-                autoHeight: "on",
-                fullScreenAutoWidth: "off",
-                fullScreenAlignForce: "off",
-                fullScreenOffsetContainer: "",
-                fullScreenOffset: "",
-                disableProgressBar: "on",
-                hideThumbsOnMobile: "on",
-                hideSliderAtLimit: 0,
-                hideCaptionAtLimit: 0,
-                hideAllCaptionAtLilmit: 0,
-                debugMode: false,
-                fallbacks: {
-                    simplifyAll: "off",
-                    nextSlideOnWindowFocus: "off",
-                    disableFocusListener: false,
+    <script type="text/javascript">
+        var revapi263,
+                tpj;
+        (function () {
+            if (!/loaded|interactive|complete/.test(document.readyState))
+                document.addEventListener("DOMContentLoaded", onLoad);
+            else
+                onLoad();
+            function onLoad() {
+                if (tpj === undefined) {
+                    tpj = jQuery;
+                    if ("off" == "on")
+                        tpj.noConflict();
                 }
-            });
-        });
+                if (tpj("#jewellery-store-slider").revolution == undefined) {
+                    revslider_showDoubleJqueryError("#jewellery-store-slider");
+                } else {
+                    revapi263 = tpj("#jewellery-store-slider").show().revolution({
+                        sliderType: "standard",
+                        /* sets the Slider's default timeline */
+                        delay: 9000,
+                        /* options are 'auto', 'fullwidth' or 'fullscreen' */
+                        sliderLayout: 'fullscreen',
+                        /* RESPECT ASPECT RATIO */
+                        autoHeight: 'off',
+                        /* options that disable autoplay */
+                        stopLoop: 'off',
+                        stopAfterLoops: -1,
+                        stopAtSlide: -1,
+                        navigation: {
+                            keyboardNavigation: "on",
+                            keyboard_direction: "horizontal",
+                            mouseScrollNavigation: "off",
+                            mouseScrollReverse: "default",
+                            onHoverStop: "off",
+                            touch: {
+                                touchenabled: "on",
+                                touchOnDesktop: "on",
+                                swipe_threshold: 75,
+                                swipe_min_touches: 1,
+                                swipe_direction: "horizontal",
+                                drag_block_vertical: true
+                            },
+                            arrows: {
+                                enable: true,
+                                style: 'uranus',
+                                tmp: '',
+                                rtl: false,
+                                hide_onleave: false,
+                                hide_onmobile: true,
+                                hide_under: 767,
+                                hide_over: 9999,
+                                hide_delay: 200,
+                                hide_delay_mobile: 1200,
+                                left: {
+                                    h_align: "right",
+                                    v_align: "top",
+                                    h_offset: 0,
+                                    v_offset: 0,
+                                },
+                                right: {
+                                    h_align: "right",
+                                    v_align: "bottom",
+                                    h_offset: 0,
+                                    v_offset: 0,
+                                }
+                            }
+                        },
+                        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                        responsiveLevels: [1240, 1024, 768, 480],
+                        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                        gridwidth: [1220, 1024, 768, 480],
+                        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                        gridheight: [970, 970, 960, 720],
+                        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                        visibilityLevels: [1240, 1024, 1024, 480],
+                        /* Lazy Load options are "all", "smart", "single" and "none" */
+                        lazyType: "smart",
+                        spinner: "spinner0",
+                        shadow: 0,
+                        shuffle: "off",
+                        fullScreenAutoWidth: "off",
+                        fullScreenAlignForce: "off",
+                        fullScreenOffsetContainer: "nav, .header-top-bar",
+                        fullScreenOffset: "-1",
+                        disableProgressBar: "on",
+                        hideThumbsOnMobile: "off",
+                        hideSliderAtLimit: 0,
+                        hideCaptionAtLimit: 0,
+                        hideAllCaptionAtLilmit: 0,
+                        debugMode: false,
+                        fallbacks: {
+                            simplifyAll: "off",
+                            nextSlideOnWindowFocus: "off",
+                            disableFocusListener: false,
+                        }
+                    });
+                }
+                ; /* END OF revapi call */
+                BubbleMorphAddOn(jQuery, revapi263, false)
+            }
+            ;
+        }()); /* END OF WRAPPING FUNCTION */
     </script>
 
     <script type="text/javascript" src="{{ asset('asset/js/main.js') }}"></script>
