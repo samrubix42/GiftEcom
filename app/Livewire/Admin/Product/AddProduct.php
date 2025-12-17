@@ -30,6 +30,7 @@ class AddProduct extends Component
     public $category_id = '';
     public $brand_id = '';
     public $status = true;
+    public $is_featured = false;
     public $has_variants = false;
 
     // Simple Product Variant (Step 2 - if has_variants = false)
@@ -371,6 +372,7 @@ class AddProduct extends Component
                 'brand_id' => $this->brand_id,
                 'has_variants' => $this->has_variants,
                 'status' => $this->status,
+                'is_featured' => $this->is_featured,
             ]);
 
             // Create variants

@@ -106,13 +106,23 @@
                 <h3 class="card-title">Status</h3>
             </div>
             <div class="card-body">
-                <div class="form-check form-switch">
+                <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" wire:model="status" id="productStatus">
                     <label class="form-check-label" for="productStatus">
                         Product is Active
                     </label>
                 </div>
                 <small class="form-hint">Inactive products won't be visible to customers</small>
+                
+                <hr class="my-3">
+                
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" wire:model="is_featured" id="productFeatured">
+                    <label class="form-check-label" for="productFeatured">
+                        Mark as Featured
+                    </label>
+                </div>
+                <small class="form-hint">Featured products appear in special sections</small>
             </div>
         </div>
     </div>

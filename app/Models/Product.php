@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
         protected $fillable = [
-        'name','slug','description','has_variants','status','category_id','brand_id'
+        'name','slug','description','has_variants','status','is_featured','category_id','brand_id'
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
+        'is_featured' => 'boolean',
+        'has_variants' => 'boolean',
     ];
 
     public function variants()

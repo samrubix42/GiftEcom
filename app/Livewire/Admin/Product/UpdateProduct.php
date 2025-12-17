@@ -28,6 +28,7 @@ class UpdateProduct extends Component
     public $category_id = '';
     public $brand_id = '';
     public $status = true;
+    public $is_featured = false;
     public $has_variants = false;
 
     // Default Variant Properties (for simple products)
@@ -69,8 +70,9 @@ class UpdateProduct extends Component
         $this->description = $this->product->description;
         $this->category_id = $this->product->category_id;
         $this->brand_id = $this->product->brand_id;
-        $this->status = $this->product->status;
-        $this->has_variants = $this->product->has_variants;
+        $this->status = (bool) $this->product->status;
+        $this->is_featured = (bool) $this->product->is_featured;
+        $this->has_variants = (bool) $this->product->has_variants;
 
         // Load existing images
         $this->existingImages = $this->product->images->toArray();
@@ -288,6 +290,7 @@ class UpdateProduct extends Component
                 'category_id' => $this->category_id,
                 'brand_id' => $this->brand_id,
                 'status' => $this->status,
+                'is_featured' => $this->is_featured,
                 'has_variants' => $this->has_variants,
             ]);
 

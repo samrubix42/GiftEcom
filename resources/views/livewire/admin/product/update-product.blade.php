@@ -589,12 +589,24 @@
                                     </h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="form-check form-switch">
+                                    <div class="form-check form-switch mb-3">
                                         <input class="form-check-input" type="checkbox" wire:model="status" id="productStatus">
                                         <label class="form-check-label" for="productStatus">
                                             <strong>Product is {{ $status ? 'Active' : 'Inactive' }}</strong>
                                             <div class="text-muted small">
                                                 {{ $status ? 'Visible to customers' : 'Hidden from customers' }}
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" wire:model="is_featured" id="productFeatured">
+                                        <label class="form-check-label" for="productFeatured">
+                                            <strong>Featured Product</strong>
+                                            <div class="text-muted small">
+                                                {{ $is_featured ? 'Shown in featured sections' : 'Regular product' }}
                                             </div>
                                         </label>
                                     </div>
