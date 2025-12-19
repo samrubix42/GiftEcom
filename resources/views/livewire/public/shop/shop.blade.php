@@ -1,4 +1,241 @@
 <div>
+    <style>
+    /* Jewelry Product Display Styling */
+    .column-layer {
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    /* Slider jewelry images - Square format for hero display */
+    .tp-caption.tp-resizeme img {
+        width: 450px !important;
+        height: 450px !important;
+        object-fit: contain;
+        object-position: center;
+        background: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    /* Category images - Landscape for category banners */
+    .category-image {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 75%;
+        /* 4:3 aspect ratio */
+        background: #f8f8f8;
+    }
+
+    .category-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+    }
+
+    .category-box:hover .category-image img {
+        transform: scale(1.05);
+    }
+
+    /* Product listing images - Portrait for jewelry showcase */
+    .shop-image {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 125%;
+        /* 4:5 aspect ratio - ideal for jewelry */
+        background: #ffffff;
+    }
+
+    .shop-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        padding: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .shop-box:hover .shop-image img {
+        transform: scale(1.08);
+    }
+
+    /* Ensure product cards have consistent height */
+    .shop-box {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .shop-footer {
+        margin-top: auto;
+    }
+
+    /* Responsive adjustments for jewelry display */
+    @media (max-width: 991px) {
+        .tp-caption.tp-resizeme img {
+            width: 350px !important;
+            height: 350px !important;
+            padding: 15px;
+        }
+
+        .category-image {
+            padding-bottom: 80%;
+        }
+
+        .shop-image {
+            padding-bottom: 130%;
+        }
+
+        .shop-image img {
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .tp-caption.tp-resizeme img {
+            width: 270px !important;
+            height: 270px !important;
+            padding: 10px;
+        }
+
+        .category-image {
+            padding-bottom: 85%;
+        }
+
+        .shop-image {
+            padding-bottom: 135%;
+        }
+
+        .shop-image img {
+            padding: 10px;
+        }
+    }
+</style><style>
+    /* Jewelry Product Display Styling */
+    .column-layer {
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    /* Slider jewelry images - Square format for hero display */
+    .tp-caption.tp-resizeme img {
+        width: 450px !important;
+        height: 450px !important;
+        object-fit: contain;
+        object-position: center;
+        background: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    /* Category images - Landscape for category banners */
+    .category-image {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 75%;
+        /* 4:3 aspect ratio */
+        background: #f8f8f8;
+    }
+
+    .category-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+    }
+
+    .category-box:hover .category-image img {
+        transform: scale(1.05);
+    }
+
+    /* Product listing images - Portrait for jewelry showcase */
+    .shop-image {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 125%;
+        /* 4:5 aspect ratio - ideal for jewelry */
+        background: #ffffff;
+    }
+
+    .shop-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        padding: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .shop-box:hover .shop-image img {
+        transform: scale(1.08);
+    }
+
+    /* Ensure product cards have consistent height */
+    .shop-box {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .shop-footer {
+        margin-top: auto;
+    }
+
+    /* Responsive adjustments for jewelry display */
+    @media (max-width: 991px) {
+        .tp-caption.tp-resizeme img {
+            width: 350px !important;
+            height: 350px !important;
+            padding: 15px;
+        }
+
+        .category-image {
+            padding-bottom: 80%;
+        }
+
+        .shop-image {
+            padding-bottom: 130%;
+        }
+
+        .shop-image img {
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .tp-caption.tp-resizeme img {
+            width: 270px !important;
+            height: 270px !important;
+            padding: 10px;
+        }
+
+        .category-image {
+            padding-bottom: 85%;
+        }
+
+        .shop-image {
+            padding-bottom: 135%;
+        }
+
+        .shop-image img {
+            padding: 10px;
+        }
+    }
+</style>
     <!-- start page title -->
     <section class="half-section top-space-margin cover-background" style="background-image: url(https://placehold.co/1920x470)">
         <div class="container">
@@ -23,39 +260,29 @@
     <!-- start section -->
     <section class="ps-6 pe-6 lg-ps-3 lg-pe-3 sm-ps-0 sm-pe-0">
         <div class="container-fluid">
-            <div class="row flex-row-reverse">
-                <div class="col-xxl-10 col-lg-9 ps-5 md-ps-15px md-mb-60px">
-                    <div class="toolbar-wrapper border-bottom border-color-extra-medium-gray d-flex flex-column flex-md-row align-items-center w-100 mb-40px md-mb-30px pb-15px" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":50, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <div class="sm-mb-10px">
-                            <a href="#" class="me-10px"><img src="images/shop-two-column.svg" class="opacity-5" alt="" /></a>
-                            <a href="#" class="me-10px"><img src="images/shop-three-column.svg" class="opacity-5" alt="" /></a>
-                            <a href="#" class="me-10px"><img src="images/shop-four-column.svg" class="opacity-5" alt="" /></a>
-                            <a href="#"><img src="images/shop-list.svg" class="opacity-5" alt="" /></a>
-                        </div>
-                        <div class="ms-20px sm-ms-0">Showing 1–12 of 48 results</div>
-                        <div class="mx-auto me-md-0">
-                            <select class="fs-18 form-select border-0 background-position-right" aria-label="Default sorting">
-                                <option selected>Default sorting</option>
-                                <option value="1">Sort by popularity</option>
-                                <option value="2">Sort by average rating</option>
-                                <option value="3">Sort by latest</option>
-                                <option value="4">Sort by price: low to high</option>
-                                <option value="5">Sort by price: high to low</option>
-                            </select>
-                        </div>
-                    </div>
-                    <ul class="shop-modern shop-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="shop-modern shop-wrapper grid grid-4col md-grid-3col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime='{ "el": "childs", "translateY": [15, 0], "translateX": [-15, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                         <li class="grid-sizer"></li>
+                        @forelse($products as $product)
+                        @php
+                        $defaultVariant = $product->defaultVariant ?? $product->variants->first();
+                        $price = $defaultVariant ? $defaultVariant->price : 0;
+                        $salePrice = $defaultVariant && $defaultVariant->sale_price ? $defaultVariant->sale_price : null;
+                        $primaryImage = $product->images->where('is_primary', true)->first() ?? $product->images->first();
+                        @endphp
                         <!-- start shop item -->
                         <li class="grid-item">
                             <div class="shop-box mb-10px">
                                 <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                        <span class="lable new">New</span>
+                                    <a href="{{ url('/product/' . $product->slug) }}">
+                                        <img src="{{ $primaryImage ? asset('storage/' . $primaryImage->image_path) : 'https://placehold.co/600x765' }}" alt="{{ $product->name }}">
+                                        @if($product->is_featured)
+                                        <span class="lable">Featured</span>
+                                        @endif
                                     </a>
                                     <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
+                                        <a href="{{ url('/product/' . $product->slug) }}" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
                                             <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
                                         </a>
                                     </div>
@@ -65,615 +292,39 @@
                                                 <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
+                                                <a href="{{ url('/product/' . $product->slug) }}" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Diamond earrings</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
+                                    <a href="{{ url('/product/' . $product->slug) }}" class="text-dark-gray fs-19 fw-500">{{ $product->name }}</a>
+                                    <div class="price">
+                                        @if($salePrice)
+                                        <del>₹{{ number_format($price, 2) }}</del>₹{{ number_format($salePrice, 2) }}
+                                        @else
+                                        ₹{{ number_format($price, 2) }}
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Geometric gold ring</a>
-                                    <div class="price"><del>$180.00</del>$159.00</div>
-                                </div>
+                        @empty
+                        <li class="col-12">
+                            <div class="text-center py-5">
+                                <p class="fs-18 text-medium-gray">No products available.</p>
                             </div>
                         </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                        <span class="lable hot">Hot</span>
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Gemstone earrings</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Gold diamond ring</a>
-                                    <div class="price">$289.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Diamond earrings</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                        <span class="lable new">New</span>
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Geometric gold ring</a>
-                                    <div class="price"><del>$150.00</del>$129.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">The aphrodite band</a>
-                                    <div class="price">$200.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Suserrer earring</a>
-                                    <div class="price"><del>$200.00</del>$179.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Gwendolyn earrings</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Twister bangle</a>
-                                    <div class="price"><del>$180.00</del>$159.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Zebra earrings</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">The paanita ring</a>
-                                    <div class="price">$289.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Zaha cutout ring</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Eyelet stud earrings</a>
-                                    <div class="price"><del>$180.00</del>$159.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Frond leaf ring</a>
-                                    <div class="price"><del>$200.00</del>$189.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-25px">
-                                    <a href="demo-jewellery-store-single-product.html">
-                                        <img src="https://placehold.co/600x765" alt="">
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="demo-jewellery-store-single-product.html" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="shop-hover d-flex justify-content-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="feather icon-feather-heart fs-16"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="bg-white w-40px h-40px text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px box-shadow-large" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick shop"><i class="feather icon-feather-eye fs-16"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-footer text-center">
-                                    <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fs-19 fw-500">Amaira ornate earrings</a>
-                                    <div class="price">$289.00</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
+                        @endforelse
                     </ul>
+
                     <div class="w-100 d-flex mt-4 justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":100, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <ul class="pagination pagination-style-01 fs-14 fw-500 mb-0">
-                            <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-left fs-18 d-xs-none"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">01</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">02</a></li>
-                            <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            <li class="page-item"><a class="page-link" href="#">04</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-right fs-18 d-xs-none"></i></a></li>
-                        </ul>
+                        {{ $products->links('vendor.livewire.pagination-links') }}
                     </div>
-                </div>
-                <div class="col-xxl-2 col-lg-3 shop-sidebar">
-                    <div class="mb-30px">
-                        <span class="alt-font fw-500 fs-19 text-dark-gray d-block mb-10px">Categories</span>
-                        <ul class="shop-filter category-filter fs-17">
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Earrings</a><span class="item-qty">22</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Bracelets</a><span class="item-qty">28</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Rings</a><span class="item-qty">36</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Pendant</a><span class="item-qty">24</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Necklace</a><span class="item-qty">26</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Wedding</a><span class="item-qty">33</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Chains</a><span class="item-qty">22</span></li>
-                        </ul>
-                    </div>
-                    <div class="mb-30px">
-                        <span class="alt-font fw-500 fs-19 text-dark-gray d-block mb-10px">Color</span>
-                        <ul class="shop-filter color-filter fs-17">
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#232323"></span>Black</a><span class="item-qty">05</span></li>
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#8E412E"></span>Chestnut</a><span class="item-qty">24</span></li>
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#E0A699"></span>Brown</a><span class="item-qty">32</span></li>
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#E0A699"></span>Pastel pink</a><span class="item-qty">22</span></li>
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#9DA693"></span>Litchen green</a><span class="item-qty">09</span></li>
-                            <li><a href="#"><span class="product-cb product-color-cb" style="background-color:#E7C06D"></span>Yellow</a><span class="item-qty">06</span></li>
-                        </ul>
-                    </div>
-                    <div class="mb-30px">
-                        <span class="alt-font fw-500 fs-19 text-dark-gray d-block mb-10px">Price</span>
-                        <ul class="shop-filter price-filter fs-17">
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>Under $25</a><span class="item-qty">08</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>$25 to $50</a><span class="item-qty">05</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>$50 to $100</a><span class="item-qty">25</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>$100 to $200</a><span class="item-qty">18</span></li>
-                            <li><a href="#"><span class="product-cb product-category-cb"></span>$200 & Above</a><span class="item-qty">36</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="mb-30px">
-                        <div class="d-flex align-items-center mb-20px">
-                            <span class="alt-font fw-500 fs-19 text-dark-gray">New arrivals</span>
-                            <div class="d-flex ms-auto">
-                                <!-- start slider navigation -->
-                                <div class="slider-one-slide-prev-1 swiper-button-prev slider-navigation-style-08 me-5px"><i class="fa-solid fa-arrow-left text-dark-gray"></i></div>
-                                <div class="slider-one-slide-next-1 swiper-button-next slider-navigation-style-08 ms-5px"><i class="fa-solid fa-arrow-right text-dark-gray"></i></div>
-                                <!-- end slider navigation -->
-                            </div>
-                        </div>
-                        <div class="swiper slider-one-slide" data-slider-options='{ "slidesPerView": 1, "loop": true, "autoplay": { "delay": 5000, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
-                            <div class="swiper-wrapper">
-                                <!-- start text slider item -->
-                                <div class="swiper-slide">
-                                    <div class="shop-filter new-arribals">
-                                        <div class="d-flex align-items-center mb-20px">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Diamond ring</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$30.00</del>$23.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-20px">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Geometric ring</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$50.00</del>$43.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Suserrer earring</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$20.00</del>$15.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end text slider item -->
-                                <!-- start text slider item -->
-                                <div class="swiper-slide">
-                                    <div class="shop-filter new-arribals">
-                                        <div class="d-flex align-items-center mb-20px">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Twister bangle</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$15.00</del>$10.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-20px">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Zebra earrings</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$35.00</del>$30.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <figure class="mb-0">
-                                                <a href="demo-jewellery-store-single-product.html">
-                                                    <img class="border-radius-4px w-80px" src="https://placehold.co/600x765" alt="">
-                                                </a>
-                                            </figure>
-                                            <div class="col ps-25px">
-                                                <a href="demo-jewellery-store-single-product.html" class="text-dark-gray alt-font fw-500">Silver earrings</a>
-                                                <div class="fs-15 lh-normal"><del class="me-5px">$20.00</del>$15.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end text slider item -->
-                            </div>
-                            <!-- start slider navigation -->
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
-
+    <!-- end section -->
 </div>

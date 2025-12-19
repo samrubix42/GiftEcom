@@ -4,7 +4,7 @@
         background-size: cover !important;
         background-position: center !important;
     }
-    
+
     /* Slider jewelry images - Square format for hero display */
     .tp-caption.tp-resizeme img {
         width: 450px !important;
@@ -15,15 +15,16 @@
         padding: 20px;
         border-radius: 8px;
     }
-    
+
     /* Category images - Landscape for category banners */
     .category-image {
         position: relative;
         overflow: hidden;
-        padding-bottom: 75%; /* 4:3 aspect ratio */
+        padding-bottom: 75%;
+        /* 4:3 aspect ratio */
         background: #f8f8f8;
     }
-    
+
     .category-image img {
         position: absolute;
         top: 0;
@@ -34,19 +35,20 @@
         object-position: center;
         transition: transform 0.3s ease;
     }
-    
+
     .category-box:hover .category-image img {
         transform: scale(1.05);
     }
-    
+
     /* Product listing images - Portrait for jewelry showcase */
     .shop-image {
         position: relative;
         overflow: hidden;
-        padding-bottom: 125%; /* 4:5 aspect ratio - ideal for jewelry */
+        padding-bottom: 125%;
+        /* 4:5 aspect ratio - ideal for jewelry */
         background: #ffffff;
     }
-    
+
     .shop-image img {
         position: absolute;
         top: 0;
@@ -58,22 +60,22 @@
         padding: 15px;
         transition: transform 0.3s ease;
     }
-    
+
     .shop-box:hover .shop-image img {
         transform: scale(1.08);
     }
-    
+
     /* Ensure product cards have consistent height */
     .shop-box {
         height: 100%;
         display: flex;
         flex-direction: column;
     }
-    
+
     .shop-footer {
         margin-top: auto;
     }
-    
+
     /* Responsive adjustments for jewelry display */
     @media (max-width: 991px) {
         .tp-caption.tp-resizeme img {
@@ -81,35 +83,35 @@
             height: 350px !important;
             padding: 15px;
         }
-        
+
         .category-image {
             padding-bottom: 80%;
         }
-        
+
         .shop-image {
             padding-bottom: 130%;
         }
-        
+
         .shop-image img {
             padding: 12px;
         }
     }
-    
+
     @media (max-width: 575px) {
         .tp-caption.tp-resizeme img {
             width: 270px !important;
             height: 270px !important;
             padding: 10px;
         }
-        
+
         .category-image {
             padding-bottom: 85%;
         }
-        
+
         .shop-image {
             padding-bottom: 135%;
         }
-        
+
         .shop-image img {
             padding: 10px;
         }
