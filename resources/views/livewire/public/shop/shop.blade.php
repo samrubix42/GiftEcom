@@ -1,241 +1,243 @@
 <div>
+    @livewire('public.shop.enquire')
     <style>
-    /* Jewelry Product Display Styling */
-    .column-layer {
-        background-size: cover !important;
-        background-position: center !important;
-    }
+        /* Jewelry Product Display Styling */
+        .column-layer {
+            background-size: cover !important;
+            background-position: center !important;
+        }
 
-    /* Slider jewelry images - Square format for hero display */
-    .tp-caption.tp-resizeme img {
-        width: 450px !important;
-        height: 450px !important;
-        object-fit: contain;
-        object-position: center;
-        background: #f8f8f8;
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    /* Category images - Landscape for category banners */
-    .category-image {
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 75%;
-        /* 4:3 aspect ratio */
-        background: #f8f8f8;
-    }
-
-    .category-image img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: transform 0.3s ease;
-    }
-
-    .category-box:hover .category-image img {
-        transform: scale(1.05);
-    }
-
-    /* Product listing images - Portrait for jewelry showcase */
-    .shop-image {
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 125%;
-        /* 4:5 aspect ratio - ideal for jewelry */
-        background: #ffffff;
-    }
-
-    .shop-image img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        padding: 15px;
-        transition: transform 0.3s ease;
-    }
-
-    .shop-box:hover .shop-image img {
-        transform: scale(1.08);
-    }
-
-    /* Ensure product cards have consistent height */
-    .shop-box {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .shop-footer {
-        margin-top: auto;
-    }
-
-    /* Responsive adjustments for jewelry display */
-    @media (max-width: 991px) {
+        /* Slider jewelry images - Square format for hero display */
         .tp-caption.tp-resizeme img {
-            width: 350px !important;
-            height: 350px !important;
+            width: 450px !important;
+            height: 450px !important;
+            object-fit: contain;
+            object-position: center;
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* Category images - Landscape for category banners */
+        .category-image {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 75%;
+            /* 4:3 aspect ratio */
+            background: #f8f8f8;
+        }
+
+        .category-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-box:hover .category-image img {
+            transform: scale(1.05);
+        }
+
+        /* Product listing images - Portrait for jewelry showcase */
+        .shop-image {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 125%;
+            /* 4:5 aspect ratio - ideal for jewelry */
+            background: #ffffff;
+        }
+
+        .shop-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
             padding: 15px;
+            transition: transform 0.3s ease;
         }
 
+        .shop-box:hover .shop-image img {
+            transform: scale(1.08);
+        }
+
+        /* Ensure product cards have consistent height */
+        .shop-box {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-footer {
+            margin-top: auto;
+        }
+
+        /* Responsive adjustments for jewelry display */
+        @media (max-width: 991px) {
+            .tp-caption.tp-resizeme img {
+                width: 350px !important;
+                height: 350px !important;
+                padding: 15px;
+            }
+
+            .category-image {
+                padding-bottom: 80%;
+            }
+
+            .shop-image {
+                padding-bottom: 130%;
+            }
+
+            .shop-image img {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .tp-caption.tp-resizeme img {
+                width: 270px !important;
+                height: 270px !important;
+                padding: 10px;
+            }
+
+            .category-image {
+                padding-bottom: 85%;
+            }
+
+            .shop-image {
+                padding-bottom: 135%;
+            }
+
+            .shop-image img {
+                padding: 10px;
+            }
+        }
+    </style>
+    <style>
+        /* Jewelry Product Display Styling */
+        .column-layer {
+            background-size: cover !important;
+            background-position: center !important;
+        }
+
+        /* Slider jewelry images - Square format for hero display */
+        .tp-caption.tp-resizeme img {
+            width: 450px !important;
+            height: 450px !important;
+            object-fit: contain;
+            object-position: center;
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* Category images - Landscape for category banners */
         .category-image {
-            padding-bottom: 80%;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 75%;
+            /* 4:3 aspect ratio */
+            background: #f8f8f8;
         }
 
+        .category-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-box:hover .category-image img {
+            transform: scale(1.05);
+        }
+
+        /* Product listing images - Portrait for jewelry showcase */
         .shop-image {
-            padding-bottom: 130%;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 125%;
+            /* 4:5 aspect ratio - ideal for jewelry */
+            background: #ffffff;
         }
 
         .shop-image img {
-            padding: 12px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .tp-caption.tp-resizeme img {
-            width: 270px !important;
-            height: 270px !important;
-            padding: 10px;
-        }
-
-        .category-image {
-            padding-bottom: 85%;
-        }
-
-        .shop-image {
-            padding-bottom: 135%;
-        }
-
-        .shop-image img {
-            padding: 10px;
-        }
-    }
-</style><style>
-    /* Jewelry Product Display Styling */
-    .column-layer {
-        background-size: cover !important;
-        background-position: center !important;
-    }
-
-    /* Slider jewelry images - Square format for hero display */
-    .tp-caption.tp-resizeme img {
-        width: 450px !important;
-        height: 450px !important;
-        object-fit: contain;
-        object-position: center;
-        background: #f8f8f8;
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    /* Category images - Landscape for category banners */
-    .category-image {
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 75%;
-        /* 4:3 aspect ratio */
-        background: #f8f8f8;
-    }
-
-    .category-image img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: transform 0.3s ease;
-    }
-
-    .category-box:hover .category-image img {
-        transform: scale(1.05);
-    }
-
-    /* Product listing images - Portrait for jewelry showcase */
-    .shop-image {
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 125%;
-        /* 4:5 aspect ratio - ideal for jewelry */
-        background: #ffffff;
-    }
-
-    .shop-image img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        padding: 15px;
-        transition: transform 0.3s ease;
-    }
-
-    .shop-box:hover .shop-image img {
-        transform: scale(1.08);
-    }
-
-    /* Ensure product cards have consistent height */
-    .shop-box {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .shop-footer {
-        margin-top: auto;
-    }
-
-    /* Responsive adjustments for jewelry display */
-    @media (max-width: 991px) {
-        .tp-caption.tp-resizeme img {
-            width: 350px !important;
-            height: 350px !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
             padding: 15px;
+            transition: transform 0.3s ease;
         }
 
-        .category-image {
-            padding-bottom: 80%;
+        .shop-box:hover .shop-image img {
+            transform: scale(1.08);
         }
 
-        .shop-image {
-            padding-bottom: 130%;
+        /* Ensure product cards have consistent height */
+        .shop-box {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .shop-image img {
-            padding: 12px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .tp-caption.tp-resizeme img {
-            width: 270px !important;
-            height: 270px !important;
-            padding: 10px;
+        .shop-footer {
+            margin-top: auto;
         }
 
-        .category-image {
-            padding-bottom: 85%;
+        /* Responsive adjustments for jewelry display */
+        @media (max-width: 991px) {
+            .tp-caption.tp-resizeme img {
+                width: 350px !important;
+                height: 350px !important;
+                padding: 15px;
+            }
+
+            .category-image {
+                padding-bottom: 80%;
+            }
+
+            .shop-image {
+                padding-bottom: 130%;
+            }
+
+            .shop-image img {
+                padding: 12px;
+            }
         }
 
-        .shop-image {
-            padding-bottom: 135%;
-        }
+        @media (max-width: 575px) {
+            .tp-caption.tp-resizeme img {
+                width: 270px !important;
+                height: 270px !important;
+                padding: 10px;
+            }
 
-        .shop-image img {
-            padding: 10px;
+            .category-image {
+                padding-bottom: 85%;
+            }
+
+            .shop-image {
+                padding-bottom: 135%;
+            }
+
+            .shop-image img {
+                padding: 10px;
+            }
         }
-    }
-</style>
+    </style>
     <!-- start page title -->
     <section class="half-section top-space-margin cover-background" style="background-image: url(https://placehold.co/1920x470)">
         <div class="container">
@@ -282,8 +284,9 @@
                                         @endif
                                     </a>
                                     <div class="shop-buttons-wrap">
-                                        <a href="{{ url('/product/' . $product->slug) }}" class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Add to cart</span>
+                                        <a wire:click="$dispatch('openEnquire', { id: {{ $product->id }} })"
+                                            class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
+                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Enquire</span>
                                         </a>
                                     </div>
                                     <div class="shop-hover d-flex justify-content-center">
