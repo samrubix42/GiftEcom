@@ -14,7 +14,7 @@ use App\Livewire\Public\Shop\Shop;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',Home::class)->name('home');
-Route::get('/shop',Shop::class)->name('shop');
+Route::get('/product',Shop::class)->name('shop');
 Route::get('/category',Category::class)->name('category');
 Route::get('/about-us',About::class)->name('about-us');
 Route::get('/product/{slug}',ProductView::class)->name('product.detail');

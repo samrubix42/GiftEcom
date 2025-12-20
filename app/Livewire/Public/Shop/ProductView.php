@@ -17,10 +17,9 @@ class ProductView extends Component
     public ?int $variant = null;
 
     public array $variantLabels = [];
+    public $relatedProducts = [];
 
-    protected $queryString = [
-        'variant' => ['except' => null],
-    ];
+
 
     public function mount($slugOrId = null)
     {
@@ -46,6 +45,15 @@ class ProductView extends Component
 
         $primaryImage = $this->product->images->firstWhere('is_primary', 1) ?? $this->product->images->first();
         $this->selectedImage = $primaryImage->image_path ?? null;
+
+        // Load related products (same category, exclude current product)
+        if ($this->product->category_id) {
+            $this->relatedProducts = Product::where('category_id', $this->product->category_id)
+                ->where('id', '<>', $this->product->id)
+                ->with(['defaultVariant', 'images'])
+                ->take(8)
+                ->get();
+        }
 
         // Build readable labels for each variant (e.g. "Color: Red — Size: M")
         foreach ($this->product->variants as $variant) {
