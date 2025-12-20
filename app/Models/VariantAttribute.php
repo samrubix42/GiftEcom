@@ -16,4 +16,14 @@ class VariantAttribute extends Model
     {
         return $this->belongsTo(ProductVariant::class,'product_variant_id');
     }
+
+    public function attribute()
+    {
+        return $this->belongsTo(Attribute::class,'attribute_id');
+    }
+
+    public function value()
+    {
+        return $this->belongsTo(AttributeValue::class,'attribute_value_id');
+    }
 }
