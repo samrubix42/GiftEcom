@@ -10,14 +10,14 @@ use Livewire\Attributes\On;
 class Enquire extends Component
 {
     
-    public $productId;
-    public $productName;
-    public $name;
-    public $email;
-    public $phone;
-    public $message;
-    public $show = false;
-    public $showConfirmation = false;
+    public ?int $productId = null;
+    public ?string $productName = null;
+    public ?string $name = null;
+    public ?string $email = null;
+    public ?string $phone = null;
+    public ?string $message = null;
+    public bool $show = false;
+    public bool $showConfirmation = false;
 
 
     protected $rules = [
@@ -57,9 +57,10 @@ class Enquire extends Component
             'phone' => $this->phone,
             'message' => $this->message,
         ]);
-
+        // hide the enquiry modal and show confirmation
         $this->show = false;
         $this->showConfirmation = true;
+
     
     }
     
