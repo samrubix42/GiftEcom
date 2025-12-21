@@ -8,8 +8,8 @@
 
     <title> {{ config('settings.brand_name', 'Panel') }} | {{ $title ?? (trim($__env->yieldContent('title')) ?: 'Page Title') }} </title>
       
-    
-    <!-- Tabler CSS -->
+
+    <!-- Tabler CSS -->  
     <link href="{{ asset('tabler/theme/css/tabler.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/theme/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/theme/css/tabler-payments.min.css') }}" rel="stylesheet" />
