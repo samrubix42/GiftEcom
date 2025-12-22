@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('tabler/theme/loaders.css') }}">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('tabler/theme/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('tabler/theme/img/') }}" type="image/x-icon">
 
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
