@@ -7,6 +7,7 @@
     <meta name="author" content="ThemeZaa">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     @yield('meta_tags')
+    <title>{{ 'GrayFoxGift | ' . ($title ?? 'Home') }}</title>
     <link rel="shortcut icon" href="{{ asset('asset/images/favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('asset/images/apple-touch-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('asset/images/apple-touch-icon-72x72.png') }}">
