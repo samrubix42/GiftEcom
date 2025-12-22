@@ -4,6 +4,8 @@ namespace App\Livewire\Public\Contact;
 
 use Livewire\Component;
 use App\Models\Contact as ContactModel;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
 class Contact extends Component
 {
@@ -34,6 +36,7 @@ class Contact extends Component
         $this->reset();
     }
 
+    #[Title('Contact Us')]
     public function render()
     {
         return view('livewire.public.contact.contact');

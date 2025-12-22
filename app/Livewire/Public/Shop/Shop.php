@@ -5,6 +5,7 @@ namespace App\Livewire\Public\Shop;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,6 +21,7 @@ class Shop extends Component
         'selectedBrand' => ['as' => 'brand'],
     ];
 
+    #[Title('Shop')]
     public function render()
     {
         $category= Category::where('is_active', true)

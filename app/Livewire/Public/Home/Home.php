@@ -5,9 +5,11 @@ namespace App\Livewire\Public\Home;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Category;
+use Livewire\Attributes\Title;
 
 class Home extends Component
 {
+    #[Title('Home')]
     public function render()
     {
         // Fetch products for different sections
