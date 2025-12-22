@@ -18,7 +18,7 @@
                    <ul class="fs-16">
                        @forelse($featuredCategories as $category)
                        <li>
-                           <a href="{{ route('shop', $category?->slug) }}">
+                           <a  href="{{ route('shop', ['category' => $category->slug]) }}">
                                {{ $category?->name }}
                            </a>
                        </li>
@@ -40,7 +40,7 @@
                    <ul class="fs-16">
                        @forelse($brands as $brand)
                        <li>
-                           <a href="{{ route('shop', $brand->slug) }}">
+                           <a  href="{{ route('shop', ['brand' => $brand->slug]) }}">
                                {{ $brand->name }}
                            </a>
                        </li>
