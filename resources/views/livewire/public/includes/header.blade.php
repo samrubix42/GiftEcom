@@ -71,8 +71,8 @@
                  </a>
                  <style>
                      .call-icon {
-                         width: 40px;
-                         height: 40px;
+                         width: 50px;
+                         height: 50px;
                          display: flex;
                          align-items: center;
                          margin-top: 1rem;
@@ -82,7 +82,7 @@
 
                      @media (max-width: 767px) {
                          .call-icon {
-                             margin-top: 1.2rem;
+                             margin-top: 1.7rem;
                              /* mt-4 */
                          }
                      }
