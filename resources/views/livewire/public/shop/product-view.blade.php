@@ -103,6 +103,9 @@
                         </span>
                     </div>
                     <p>{{ $product->description }}</p>
+                    <div class="mb-15px">
+                        <button type="button" class="btn btn-outline-secondary btn-black btn-sm" wire:click="$dispatch('openEnquire', {id:{{ $product->id }} })">Enquire</button>
+                    </div>
                     @if($product->variants->count())
                     <div class="mb-20px">
                         <label class="text-dark-gray alt-font me-15px fw-500 d-block mb-2">Options</label>
@@ -195,5 +198,8 @@
             </div>
         </div>
     </section>
+        <!-- Enquiry modal Livewire component -->
+    <livewire:public.shop.enquire />
 
 </div>
+
