@@ -115,7 +115,7 @@
                                                      <a href="demo-jewellery-store-categories.html" class="d-none d-lg-block">
                                                      </a>
                                                      @foreach($chunk as $cat)
-                                                     <img src="https://placehold.co/190x140" class="border-radius-4px mb-5px" alt="">
+                                                     <img src="{{ $cat->image ? asset('storage/'.$cat->image) : $placeholder }}" class="border-radius-4px mb-5px" alt="">
 
                                                      <a href="{{ route('shop', ['category' => $cat->slug]) }}" class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0 text-start text-lg-center d-block mb-2">
                                                          <span>

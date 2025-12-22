@@ -10,6 +10,7 @@ use App\Livewire\Admin\Product\UpdateProduct;
 use App\Livewire\Auth\Login;
 use App\Livewire\Public\About\About;
 use App\Livewire\Public\Category\Category;
+use App\Livewire\Public\Contact\Contact;
 use App\Livewire\Public\Home\Home;
 use App\Livewire\Public\Shop\ProductView;
 use App\Livewire\Public\Shop\Shop;
@@ -23,6 +24,7 @@ Route::get('/',Home::class)->name('home');
 Route::get('/product',Shop::class)->name('shop');
 Route::get('/category',Category::class)->name('category');
 Route::get('/about-us',About::class)->name('about-us');
+Route::get('/contact-us',Contact::class)->name('contact-us');
 Route::get('/product/{slug}',ProductView::class)->name('product.detail');
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');

@@ -25,7 +25,7 @@ class Home extends Component
 
         $categories = Category::where('is_active', true)
             ->whereNull('parent_id')
-            ->take(4)
+            ->where('is_featured', true)
             ->get();
 
         return view('livewire.public.home.home', [
