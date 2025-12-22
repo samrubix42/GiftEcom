@@ -12,5 +12,6 @@ class Enquiry extends Model
         'email',
         'phone',
         'message',
+        'status',
     ];
 }

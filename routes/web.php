@@ -3,6 +3,7 @@
 use App\Livewire\Admin\Brand\BrandList;
 use App\Livewire\Admin\Category\CategoryList;
 use App\Livewire\Admin\Dashboard\Dashboard;
+use App\Livewire\Admin\EnquireList;
 use App\Livewire\Admin\Product\AddProduct;
 use App\Livewire\Admin\Product\ProductList;
 use App\Livewire\Admin\Product\UpdateProduct;
@@ -32,6 +33,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/products', ProductList::class)->name('products.index');
     Route::get('/products/create', AddProduct::class)->name('products.create');
     Route::get('/products/{id}/edit', UpdateProduct::class)->name('products.edit');
+    Route::get('Enquire',EnquireList::class)->name('enquiries');
 });
 
 Route::get('logout', function () {

@@ -49,6 +49,13 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
+            (object)[
+                'title' => 'Enquiries',
+                'icon' => 'ti ti-mail',
+                'url' => route('admin.enquiries'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
            
         ]);
         return $menu;
