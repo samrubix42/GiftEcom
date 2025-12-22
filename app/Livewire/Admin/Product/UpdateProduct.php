@@ -25,6 +25,8 @@ class UpdateProduct extends Component
     public $name = '';
     public $slug = '';
     public $description = '';
+    public $long_description = '';
+    public $additional_information = '';
     public $category_id = '';
     public $brand_id = '';
     public $status = true;
@@ -68,6 +70,8 @@ class UpdateProduct extends Component
         $this->name = $this->product->name;
         $this->slug = $this->product->slug;
         $this->description = $this->product->description;
+        $this->long_description = $this->product->long_description;
+        $this->additional_information = $this->product->additional_information;
         $this->category_id = $this->product->category_id;
         $this->brand_id = $this->product->brand_id;
         $this->status = (bool) $this->product->status;
@@ -263,6 +267,8 @@ class UpdateProduct extends Component
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:products,slug,' . $this->productId,
                 'category_id' => 'required|exists:categories,id',
+                'long_description' => 'nullable|string',
+                'additional_information' => 'nullable|string',
                 'variants' => 'required|array|min:1',
                 'variants.*.sku' => 'required|string',
                 'variants.*.price' => 'required|numeric|min:0',
@@ -273,6 +279,8 @@ class UpdateProduct extends Component
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:products,slug,' . $this->productId,
                 'category_id' => 'required|exists:categories,id',
+                'long_description' => 'nullable|string',
+                'additional_information' => 'nullable|string',
                 'sku' => 'required|string|unique:product_variants,sku,' . $this->defaultVariantId,
                 'price' => 'required|numeric|min:0',
                 'stock' => 'required|integer|min:0',
@@ -287,6 +295,8 @@ class UpdateProduct extends Component
                 'name' => $this->name,
                 'slug' => $this->slug,
                 'description' => $this->description,
+                'long_description' => $this->long_description,
+                'additional_information' => $this->additional_information,
                 'category_id' => $this->category_id,
                 'brand_id' => $this->brand_id,
                 'status' => $this->status,

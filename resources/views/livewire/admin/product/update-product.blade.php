@@ -62,6 +62,22 @@
                                         placeholder="Enter product description"></textarea>
                                     @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Long Description</label>
+                                    <div wire:ignore>
+                                        <textarea id="long_description" class="form-control @error('long_description') is-invalid @enderror" rows="8" placeholder="Enter long description">{{ $long_description }}</textarea>
+                                    </div>
+                                    @error('long_description') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Additional Information</label>
+                                    <div wire:ignore>
+                                        <textarea id="additional_information" class="form-control @error('additional_information') is-invalid @enderror" rows="6" placeholder="Enter additional information">{{ $additional_information }}</textarea>
+                                    </div>
+                                    @error('additional_information') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -691,3 +707,74 @@
     @endif
 </div>
 </div>
+<!-- TinyMCE dynamic loader and init -->
+<script>
+function loadScript(src, cb, errCb) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.referrerPolicy = 'origin';
+    s.onload = cb;
+    s.onerror = errCb || function() { console.error('Failed to load script: ' + src); };
+    document.head.appendChild(s);
+}
+
+function initTinyMceEditors() {
+    if (typeof tinymce === 'undefined') return;
+
+    // destroy existing editors if present
+    ['long_description','additional_information'].forEach(function(id) {
+        var existing = tinymce.get(id);
+        if (existing) {
+            try { existing.destroy(); } catch (e) { console.warn(e); }
+        }
+    });
+
+    var common = {
+        menubar: false,
+        plugins: 'link image lists table code advlist autolink paste help wordcount',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image | code',
+        setup: function (editor) {
+            editor.on('init', function () {
+                var initial = '';
+                try {
+                    if (editor.id === 'long_description') initial = @json($long_description ?? '');
+                    if (editor.id === 'additional_information') initial = @json($additional_information ?? '');
+                } catch (e) { initial = ''; }
+                editor.setContent(initial || '');
+            });
+            editor.on('Change KeyUp', function () {
+                try {
+                    if (editor.id === 'long_description') {
+                        @this.set('long_description', editor.getContent());
+                    }
+                    if (editor.id === 'additional_information') {
+                        @this.set('additional_information', editor.getContent());
+                    }
+                } catch (e) { console.warn('Livewire not available yet'); }
+            });
+        }
+    };
+
+    tinymce.init(Object.assign({}, common, { selector: '#long_description' }));
+    tinymce.init(Object.assign({}, common, { selector: '#additional_information' }));
+}
+
+document.addEventListener('livewire:init', function () {
+    if (typeof tinymce === 'undefined') {
+        loadScript("https://cdn.tiny.cloud/1/pvxf2rey6dhbd0zfoep9pxag4n66tqcoa74t54qq0aybqjbs/tinymce/8/tinymce.min.js", function () {
+            initTinyMceEditors();
+        }, function () {
+            console.error('TinyMCE failed to load from CDN.');
+        });
+    } else {
+        initTinyMceEditors();
+    }
+
+    // Re-init editors after Livewire processes messages (in case of DOM updates)
+    if (window.livewire) {
+        window.livewire.hook('message.processed', function () {
+            initTinyMceEditors();
+        });
+    }
+});
+</script>

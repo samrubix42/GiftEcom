@@ -140,7 +140,7 @@
                                     <div class="btn-list flex-nowrap">
                                         <a href="{{ route('admin.products.edit', $product->id) }}"
                                             class="btn btn-sm btn-primary"
-                                            wire:navigate>
+                                          >
                                             Edit
                                         </a>
                                         <button class="btn btn-sm btn-danger"
