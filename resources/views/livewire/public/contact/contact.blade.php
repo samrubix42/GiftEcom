@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="feature-box-content">
                                     <span class="d-block">Get in touch with us?</span>
-                                    <span class="fs-20 fw-500 alt-font text-dark-gray d-block"><a href="tel:1234567890">123 456 7890</a></span>
+                                    <span class="fs-20 fw-500 alt-font text-dark-gray d-block"><a href="tel:+1 352 308 8999">+1 352 308 8999</a></span>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="feature-box-content">
                                     <span class="d-block">How can help you?</span>
-                                    <a href="mailto:help@domain.com" class="fs-20 fw-500 alt-font text-dark-gray">help@domain.com</a>
+                                    <a href="mailto:hello@grayfoxgifts.com" class="fs-20 fw-500 alt-font text-dark-gray">hello@grayfoxgifts.com</a>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="feature-box-content">
                                     <span class="d-block">Are you ready for visit?</span>
-                                    <span class="fs-20 fw-500 alt-font text-dark-gray d-block">12 Orchard, London</span>
+                                    <span class="fs-20 fw-500 alt-font text-dark-gray d-block">16888 US Highway 441, Mt Dora, FL 32757, USA</span>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="feature-box-content">
                                     <span class="d-block">Need live chat?</span>
-                                    <a href="mailto:chat@domain.com" class="fs-20 fw-500 alt-font text-dark-gray">chat@domain.com</a>
+                                    <a href="mailto:hello@grayfoxgifts.com" class="fs-20 fw-500 alt-font text-dark-gray">hello@grayfoxgifts.com</a>
                                 </div>
                             </div>
                         </div>

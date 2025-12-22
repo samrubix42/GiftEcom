@@ -8,7 +8,6 @@
         </div>
 
         <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-
             <div class="input-icon">
                 <span class="input-icon-addon">
                     <i class="ti ti-search"></i>
@@ -19,53 +18,65 @@
             <button wire:click="openModal" class="btn btn-primary">
                 <i class="ti ti-plus"></i> Add Brand
             </button>
-
         </div>
     </div>
 
-    <!-- Brand Table Card -->
+    <!-- TABLE -->
     <div class="card mt-4 shadow-sm">
         <div class="table-responsive">
             <table class="table table-vcenter table-hover card-table">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Slug</th>
+                        <th>Featured</th>
                         <th>Status</th>
-                        <th class="w-1 text-end">Actions</th>
+                        <th class="text-end">Actions</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @forelse($brands as $brand)
                         <tr>
-                            <td class="text-muted fw-semibold">{{ $brand->name }}</td>
+                            <td>
+                                @if($brand->image)
+                                    <img src="{{ asset('storage/'.$brand->image) }}" width="40" class="rounded">
+                                @else
+                                    <span class="text-muted">—</span>
+                                @endif
+                            </td>
+
+                            <td class="fw-semibold">{{ $brand->name }}</td>
                             <td class="text-muted">{{ $brand->slug }}</td>
 
                             <td>
-                                <span class="badge @if($brand->is_active) bg-green-lt @else bg-secondary-lt @endif">
+                                <span class="badge {{ $brand->is_featured ? 'bg-yellow-lt' : 'bg-secondary-lt' }}">
+                                    {{ $brand->is_featured ? 'Featured' : 'No' }}
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="badge {{ $brand->is_active ? 'bg-green-lt' : 'bg-secondary-lt' }}">
                                     {{ $brand->is_active ? 'Active' : 'Inactive' }}
                                 </span>
                             </td>
 
                             <td class="text-end">
-                                <div class="btn-list flex-nowrap">
+                                <button class="btn btn-icon btn-warning btn-sm"
+                                    wire:click="edit({{ $brand->id }})">
+                                    <i class="ti ti-edit"></i>
+                                </button>
 
-                                    <button class="btn btn-icon btn-warning btn-sm"
-                                        wire:click="edit({{ $brand->id }})" title="Edit">
-                                        <i class="ti ti-edit"></i>
-                                    </button>
-
-                                    <button class="btn btn-icon btn-danger btn-sm"
-                                        wire:click="openDeleteModal({{ $brand->id }})" title="Delete">
-                                        <i class="ti ti-trash"></i>
-                                    </button>
-
-                                </div>
+                                <button class="btn btn-icon btn-danger btn-sm"
+                                    wire:click="openDeleteModal({{ $brand->id }})">
+                                    <i class="ti ti-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center text-muted py-5">
+                            <td colspan="6" class="text-center text-muted py-5">
                                 No brands found
                             </td>
                         </tr>
@@ -81,31 +92,79 @@
 
     <!-- CREATE / EDIT MODAL -->
     @if($modalOpen)
-        <div class="modal fade show d-block" style="background: rgba(0,0,0,.45);" tabindex="-1">
+        <div class="modal fade show d-block"
+             wire:ignore.self
+             style="background: rgba(0,0,0,.45)">
             <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content shadow-lg">
 
                     <div class="modal-header">
                         <h3 class="modal-title">{{ $brandId ? 'Edit Brand' : 'Add Brand' }}</h3>
-                        <button type="button" class="btn-close" wire:click="closeModal"></button>
+                        <button class="btn-close" wire:click="closeModal"></button>
                     </div>
 
                     <div class="modal-body">
 
+                        <!-- Brand Name -->
                         <div class="mb-3">
                             <label class="form-label">Brand Name</label>
                             <input wire:model.live="name" type="text" class="form-control"
-                                placeholder="Enter brand name">
+                                   placeholder="Enter brand name">
                             @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
+                        <!-- Slug -->
                         <div class="mb-3">
                             <label class="form-label">Slug</label>
                             <input wire:model="slug" type="text" class="form-control"
-                                placeholder="Auto-created or edit manually">
+                                   placeholder="Auto-generated or edit manually">
                             @error('slug') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
+                        <!-- Image Upload with Preview + Loader -->
+                        <div class="mb-3">
+                            <label class="form-label">Brand Image</label>
+
+                            <input type="file"
+                                   wire:model="image"
+                                   class="form-control">
+
+                            <!-- Loading -->
+                            <div wire:loading wire:target="image" class="mt-2">
+                                <div class="d-flex align-items-center text-muted">
+                                    <span class="spinner-border spinner-border-sm me-2"></span>
+                                    Uploading image...
+                                </div>
+                            </div>
+
+                            <!-- Preview -->
+                            @if ($image)
+                                <div class="mt-2">
+                                    <img src="{{ $image->temporaryUrl() }}"
+                                         class="rounded border"
+                                         width="120">
+                                </div>
+                            @elseif ($oldImage)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/'.$oldImage) }}"
+                                         class="rounded border"
+                                         width="120">
+                                </div>
+                            @endif
+
+                            @error('image') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+
+                        <!-- Featured -->
+                        <div class="mb-3">
+                            <label class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       wire:model="is_featured">
+                                <span class="form-check-label">Featured Brand</span>
+                            </label>
+                        </div>
+
+                        <!-- Status -->
                         <div class="mb-3">
                             <label class="form-label">Status</label>
                             <select wire:model="is_active" class="form-select">
@@ -133,23 +192,30 @@
 
     <!-- DELETE CONFIRM MODAL -->
     @if($deleteModal)
-        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,.45)">
+        <div class="modal fade show d-block"
+             wire:ignore.self
+             style="background: rgba(0,0,0,.45)">
             <div class="modal-dialog modal-sm modal-dialog-centered">
                 <div class="modal-content">
 
-                    <div class="modal-status bg-danger"></div>
-
                     <div class="modal-body text-center py-4">
-                        <i class="ti ti-alert-triangle icon mb-3 text-danger" style="font-size:40px;"></i>
+                        <i class="ti ti-alert-triangle icon mb-3 text-danger fs-1"></i>
                         <h3>Delete Brand?</h3>
                         <p class="text-muted">
-                            Are you sure you want to delete <strong>{{ $deleteName }}</strong> permanently?
+                            Are you sure you want to delete
+                            <strong>{{ $deleteName }}</strong>?
                         </p>
                     </div>
 
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-link" wire:click="$set('deleteModal', false)">Cancel</button>
-                        <button class="btn btn-danger" wire:click="deleteBrand">Yes, Delete</button>
+                        <button class="btn btn-link"
+                                wire:click="$set('deleteModal', false)">
+                            Cancel
+                        </button>
+                        <button class="btn btn-danger"
+                                wire:click="deleteBrand">
+                            Yes, Delete
+                        </button>
                     </div>
 
                 </div>
