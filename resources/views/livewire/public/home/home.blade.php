@@ -1031,8 +1031,10 @@
                                                     <span class="lable new">New</span>
                                                 </a>
                                                 <div class="shop-buttons-wrap">
-                                                    <button type="button" class="btn btn-outline-secondary btn-black btn-sm" wire:click="$dispatch('openEnquire', {id:{{ $product->id }} })">Enquire</button>
-
+                                                    <a wire:click="$dispatch('openEnquire', { id: {{ $product->id }} })"
+                                                        class="alt-font btn btn-small btn-box-shadow btn-dark-gray btn-round-edge left-icon add-to-cart">
+                                                        <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Enquire</span>
+                                                    </a>
                                                 </div>
                                                 <div class="shop-hover d-flex justify-content-center">
                                                     <ul>

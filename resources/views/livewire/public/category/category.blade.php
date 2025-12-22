@@ -1,6 +1,6 @@
 <div>
       <!-- start page title -->
-        <section class="half-section top-space-margin cover-background" style="background-image: url(https://placehold.co/1920x470)">
+        <section class="half-section top-space-margin cover-background" style="background-image: url('{{ asset('image/demo-jewellery-store-about-title-bg.jpg') }}');">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-8 text-center position-relative page-title-extra-large">
@@ -10,7 +10,7 @@
                             </div>
                             <div class="fs-16 fw-500 alt-font text-dark-gray justify-content-center breadcrumb breadcrumb-style-01 mt-auto">
                                 <ul>
-                                    <li><a href="{{ url('/') }}" class="text-dark-gray text-medium-gray-hover">Home</a></li>
+                                    <li><a href="{{ route('home') }}" class="text-dark-gray text-medium-gray-hover">Home</a></li>
                                     <li>Categories</li>
                                 </ul>
                             </div>
