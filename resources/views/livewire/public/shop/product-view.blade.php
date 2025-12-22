@@ -153,7 +153,7 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-xl-5 col-lg-6 col-md-8 text-center last-paragraph-no-margin">
                     <h3 class="fw-500 ls-minus-1px text-dark-gray mb-10px">You may also like</h3>
-                    <p>Lorem ipsum dolor amet consectetur adipiscing dictum placerat diam in vestibulum vivamus in eros.</p>
+                    <p>Celebrate life’s special moments with a meaningful gift that speaks from the heart. Ideal for surprising loved ones and creating memories that last long after the occasion.</p>
                 </div>
             </div>
             <div class="row">
@@ -198,8 +198,7 @@
             </div>
         </div>
     </section>
-        <!-- Enquiry modal Livewire component -->
+    <!-- Enquiry modal Livewire component -->
     <livewire:public.shop.enquire />
 
 </div>
-

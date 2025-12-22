@@ -9,8 +9,7 @@ use Livewire\Component;
 class Footer extends Component
 {
     public function render()
-    {  $featuredCategories = Category::where('is_featured', true)
-        ->where('is_active', true)
+    {  $featuredCategories = Category::where('is_active', true)
         ->orderBy('name')
         ->limit(5)
         ->get();
