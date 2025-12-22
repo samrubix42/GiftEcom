@@ -160,7 +160,6 @@
                     });
                 }
                 ; /* END OF revapi call */
-                BubbleMorphAddOn(jQuery, revapi263, false)
             }
             ;
         }()); /* END OF WRAPPING FUNCTION */

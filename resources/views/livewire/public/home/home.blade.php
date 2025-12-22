@@ -130,7 +130,7 @@
                             <!-- minimum slide structure -->
                             <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="01" data-description="">
                                 <!-- slide's main background image -->
-                                <img src="images/rev-trans-tile.png" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
+                                <img src="{{ asset('asset/images/rev-trans-tile.png') }}" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
                                 <!-- start bubble layer -->
                                 <div class="tp-caption tp-no-events tp-shape tp-shapewrapper tp-bubblemorph "
                                     id="slide-1-layer-01"
@@ -243,7 +243,7 @@
                                             data-paddingright="[0,0,0,0]"
                                             data-paddingbottom="[0,0,0,0]"
                                             data-paddingleft="[0,0,0,0]"
-                                            style=" background-image: url('https://placehold.co/2000x2000'); background-size: cover; background-position: top;">
+                                            style=" background-image: url('{{ asset('image/demo-jewellery-store-slider-01-img-01.jpg') }}'); background-size: cover; background-position: top;">
                                             <!-- start extra layer -->
                                             <div class="wrapper-text">
                                                 <!-- start text layer -->
@@ -359,7 +359,7 @@
                                                     data-marginright="[0,0,0,0]"
                                                     data-marginbottom="[0,0,0,0]"
                                                     data-marginleft="[0,0,0,0]">
-                                                    <img src="https://placehold.co/2000x2000" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
+                                                    <img src="{{asset('image/demo-jewellery-store-slider-01-img-02.jpg')}}" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
                                                 </div>
                                                 <!-- end image layer -->
                                                 <!-- start button layer -->
@@ -404,7 +404,7 @@
                             <!-- minimum slide structure -->
                             <li data-index="rs-02" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="01" data-description="">
                                 <!-- slide's main background image -->
-                                <img src="images/rev-trans-tile.png" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
+                                <img src="{{ asset('asset/images/rev-trans-tile.png') }}" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
                                 <!-- start bubble layer -->
                                 <div class="tp-caption tp-no-events tp-shape tp-shapewrapper tp-bubblemorph "
                                     id="slide-2-layer-01"
@@ -517,7 +517,7 @@
                                             data-paddingright="[0,0,0,0]"
                                             data-paddingbottom="[0,0,0,0]"
                                             data-paddingleft="[0,0,0,0]"
-                                            style=" background-image: url('https://placehold.co/2000x2000'); background-size: cover; background-position: top;">
+                                            style=" background-image: url('{{ asset('image/demo-jewellery-store-slider-02-img-01.jpg') }}'); background-size: cover; background-position: top;">
                                             <!-- start extra layer -->
                                             <div class="wrapper-text">
                                                 <!-- start text layer -->
@@ -633,7 +633,7 @@
                                                     data-marginright="[0,0,0,0]"
                                                     data-marginbottom="[0,0,0,0]"
                                                     data-marginleft="[0,0,0,0]">
-                                                    <img src="https://placehold.co/2000x2000" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
+                                                    <img src="{{ asset('image/demo-jewellery-store-slider-02-img-02.jpg') }}" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
                                                 </div>
                                                 <!-- end image layer -->
                                                 <!-- start button layer -->
@@ -678,7 +678,7 @@
                             <!-- minimum slide structure -->
                             <li data-index="rs-03" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="01" data-description="">
                                 <!-- slide's main background image -->
-                                <img src="images/rev-trans-tile.png" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
+                                <img src="{{ asset('asset/images/rev-trans-tile.png') }}" alt="dummy" class="rev-slidebg" data-bgcolor='#ffddc6'>
                                 <!-- start bubble layer -->
                                 <div class="tp-caption tp-no-events tp-shape tp-shapewrapper tp-bubblemorph "
                                     id="slide-3-layer-01"
@@ -791,7 +791,7 @@
                                             data-paddingright="[0,0,0,0]"
                                             data-paddingbottom="[0,0,0,0]"
                                             data-paddingleft="[0,0,0,0]"
-                                            style=" background-image: url('https://placehold.co/2000x2000'); background-size: cover; background-position: top;">
+                                            style=" background-image: url('{{ asset('image/demo-jewellery-store-slider-03-img-01.jpg') }}'); background-size: cover; background-position: top;">
                                             <!-- start extra layer -->
                                             <div class="wrapper-text">
                                                 <!-- start text layer -->
@@ -907,7 +907,7 @@
                                                     data-marginright="[0,0,0,0]"
                                                     data-marginbottom="[0,0,0,0]"
                                                     data-marginleft="[0,0,0,0]">
-                                                    <img src="https://placehold.co/2000x2000" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
+                                                    <img src="{{ asset('image/demo-jewellery-store-slider-03-img-02 (1).jpg') }}" alt="" data-ww="['100%','100%','350','270']" data-hh="['100%','100%','350','270']" width="450" height="450">
                                                 </div>
                                                 <!-- end image layer -->
                                                 <!-- start button layer -->
@@ -956,64 +956,7 @@
         </section>
         <!-- end banner slider -->
         <!-- start section -->
-        <section class="border-bottom pt-45px pb-45px">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2" data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-01 md-mb-25px">
-                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
-                            <div class="feature-box-icon me-25px">
-                                <i class="ti-truck icon-large text-dark-gray"></i>
-                            </div>
-                            <div class="feature-box-content">
-                                <span class="fs-19 fw-500 d-block alt-font text-dark-gray">Free shipping</span>
-                                <p class="lh-24">On order over $199</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-01 md-mb-25px">
-                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
-                            <div class="feature-box-icon me-25px">
-                                <i class="ti-headphone icon-large text-dark-gray"></i>
-                            </div>
-                            <div class="feature-box-content">
-                                <span class="fs-19 fw-500 d-block alt-font text-dark-gray">Online support</span>
-                                <p class="lh-24">Customer service</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-01 md-mb-25px">
-                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
-                            <div class="feature-box-icon me-25px">
-                                <i class="ti-reload icon-large text-dark-gray"></i>
-                            </div>
-                            <div class="feature-box-content">
-                                <span class="fs-19 fw-500 d-block alt-font text-dark-gray">30 Days return</span>
-                                <p class="lh-24">If goods have problems</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-01">
-                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
-                            <div class="feature-box-icon me-25px">
-                                <i class="ti-credit-card icon-large text-dark-gray"></i>
-                            </div>
-                            <div class="feature-box-content">
-                                <span class="fs-19 fw-500 d-block alt-font text-dark-gray">Secure payment</span>
-                                <p class="lh-24">100% secure payment</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                </div>
-            </div>
-        </section>
+    
         <!-- end section -->
         <!-- start section -->
         <section>

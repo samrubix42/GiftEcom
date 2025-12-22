@@ -30,7 +30,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/categories', CategoryList::class)->name('categories');
     Route::get('/brands', BrandList::class)->name('brands');
-    
+    Route::get('contacts', App\Livewire\Admin\Contact\Contact::class)->name('contacts');
     // Product routes
     Route::get('/products', ProductList::class)->name('products.index');
     Route::get('/products/create', AddProduct::class)->name('products.create');

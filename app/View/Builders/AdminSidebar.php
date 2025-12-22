@@ -56,6 +56,13 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
+            (object)[
+                'title' => 'Contacts',
+                'icon' => 'ti ti-phone',
+                'url' => route('admin.contacts'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
            
         ]);
         return $menu;

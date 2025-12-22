@@ -1,9 +1,9 @@
-   <footer class="footer-dark bg-seashell-white pb-0 cover-background" style="background-image: url('images/demo-jewellery-store-footer-bg.jpg');">
+   <footer class="footer-dark bg-seashell-white pb-0 cover-background" style="background-image: url('{{ asset('asset/images/demo-jewellery-store-footer-bg.jpg') }}');">
             <div class="container">
                 <div class="row justify-content-center mb-4 sm-mb-35px">
                     <!-- start footer column -->
                     <div class="col-6 col-lg-3 last-paragraph-no-margin order-sm-1 md-mb-50px xs-mb-30px">
-                        <a href="demo-jewellery-store.html" class="footer-logo d-inline-block mb-20px"><img src="images/demo-jewellery-store-logo-black.png" data-at2x="images/demo-jewellery-store-logo-black@2x.png" alt=""></a>
+                        <a href="demo-jewellery-store.html" class="footer-logo d-inline-block mb-20px"><img src="{{ asset('asset/images/demo-jewellery-store-logo-black.png') }}" data-at2x="{{ asset('asset/images/demo-jewellery-store-logo-black@2x.png') }}" alt=""></a>
                         <span class="lh-22 alt-font fw-500 text-dark-gray d-block w-80 lg-w-100 mb-15px">Please reach out to when you need support.</span>
                         <div class="fs-16 text-brown"><i class="feather icon-feather-phone-call icon-small me-10px xs-me-5px text-dark-gray"></i><a href="tel:11234567890">+1 1234567890</a></div>
                         <div class="fs-16"><i class="feather icon-feather-mail icon-small me-10px xs-me-5px text-dark-gray"></i><a href="mailto:info@domain.com">info@domain.com</a></div>
@@ -57,13 +57,7 @@
                             </ul>
                         </div>
                         <span class="alt-font fw-500 text-dark-gray d-block mb-10px">Secure payment</span>
-                        <div class="footer-card d-block d-sm-flex align-items-center">
-                            <a href="#" class="d-inline-block me-5px align-middle"><img src="images/visa.svg" class="h-25px" alt=""></a>
-                            <a href="#" class="d-inline-block me-5px align-middle"><img src="images/mastercard.svg" class="h-25px" alt=""></a>
-                            <a href="#" class="d-inline-block me-5px align-middle"><img src="images/american-express.svg" class="h-25px" alt=""></a>
-                            <a href="#" class="d-inline-block me-5px align-middle"><img src="images/discover.svg" class="h-25px" alt=""></a>
-                            <a href="#" class="d-inline-block me-5px align-middle"><img src="images/diners-club.svg" class="h-25px" alt=""></a>
-                        </div>
+                        
                     </div>
                     <!-- end footer column -->                        
                 </div>
