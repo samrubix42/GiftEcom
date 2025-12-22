@@ -4,32 +4,39 @@ namespace App\Livewire\Admin\Category;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 
 class CategoryList extends Component
 {
-    use WithPagination;
+    use WithPagination, WithFileUploads;
+
     protected $paginationTheme = 'bootstrap';
 
+    // Form fields
     public $categoryId = null;
     public $name = '';
     public $slug = '';
     public $parent_id = null;
     public $is_active = 1;
-
-    public $modalOpen = false;
     public $is_subcategory = false;
+    public $image;
+    public $imagePreview;
+    public $is_featured = false;
 
+    // UI control
+    public $modalOpen = false;
     public $search = '';
     public $perPage = 10;
 
+    // Delete control
     public $confirmDelete = false;
     public $deleteId;
     public $deleteName;
 
-
+    // Validation rules
     protected function rules()
     {
         return [
@@ -37,6 +44,8 @@ class CategoryList extends Component
             'slug'       => 'required|max:255|unique:categories,slug,' . $this->categoryId,
             'parent_id'  => $this->is_subcategory ? 'required|exists:categories,id' : 'nullable',
             'is_active'  => 'boolean',
+            'image'      => $this->categoryId ? 'nullable|image|max:1024' : 'required|image|max:1024',
+            'is_featured'=> 'boolean',
         ];
     }
 
@@ -59,7 +68,7 @@ class CategoryList extends Component
         $this->modalOpen = false;
     }
 
-    // Reset form
+    // Reset form fields
     public function resetFields()
     {
         $this->categoryId = null;
@@ -68,27 +77,33 @@ class CategoryList extends Component
         $this->parent_id = null;
         $this->is_active = 1;
         $this->is_subcategory = false;
+        $this->image = null;
+        $this->imagePreview = null;
+        $this->is_featured = false;
     }
 
-    // Save new record
+    // Save new category
     public function save()
     {
         $this->slug = Str::slug($this->slug ?: $this->name);
-
         $this->validate();
 
+        $imagePath = $this->image ? $this->image->store('categories', 'public') : null;
+
         Category::create([
-            'name'      => $this->name,
-            'slug'      => $this->slug,
-            'parent_id' => $this->is_subcategory ? $this->parent_id : null,
-            'is_active' => $this->is_active,
+            'name'       => $this->name,
+            'slug'       => $this->slug,
+            'parent_id'  => $this->is_subcategory ? $this->parent_id : null,
+            'is_active'  => $this->is_active,
+            'is_featured'=> $this->is_featured,
+            'image'      => $imagePath,
         ]);
 
         $this->dispatch('toast', type: 'success', message: 'Category added successfully.');
         $this->closeModal();
     }
 
-    // Load existing data for edit
+    // Load existing category for edit
     public function edit($id)
     {
         $cat = Category::findOrFail($id);
@@ -98,19 +113,19 @@ class CategoryList extends Component
         $this->slug = $cat->slug;
         $this->parent_id = $cat->parent_id;
         $this->is_active = $cat->is_active;
-
         $this->is_subcategory = !empty($cat->parent_id);
+        $this->imagePreview = $cat->image ? asset('storage/'.$cat->image) : null;
+        $this->is_featured = (bool)$cat->is_featured;
 
         $this->modalOpen = true;
     }
 
-    // Update existing category
+    // Update category
     public function update()
     {
         $cat = Category::findOrFail($this->categoryId);
 
         $this->slug = Str::slug($this->slug ?: $this->name);
-
         $this->validate();
 
         if ($this->parent_id == $cat->id) {
@@ -118,29 +133,31 @@ class CategoryList extends Component
             return;
         }
 
+        $imagePath = $this->image ? $this->image->store('categories', 'public') : $cat->image;
+
         $cat->update([
-            'name'      => $this->name,
-            'slug'      => $this->slug,
-            'parent_id' => $this->is_subcategory ? $this->parent_id : null,
-            'is_active' => $this->is_active,
+            'name'       => $this->name,
+            'slug'       => $this->slug,
+            'parent_id'  => $this->is_subcategory ? $this->parent_id : null,
+            'is_active'  => $this->is_active,
+            'is_featured'=> $this->is_featured,
+            'image'      => $imagePath,
         ]);
 
         $this->dispatch('toast', type: 'success', message: 'Category updated successfully.');
         $this->closeModal();
     }
 
-    // Open delete popup
+    // Delete confirmation
     public function confirmDeleteModal($id)
     {
         $cat = Category::findOrFail($id);
 
-        $this->deleteId   = $cat->id;
+        $this->deleteId = $cat->id;
         $this->deleteName = $cat->name;
-
         $this->confirmDelete = true;
     }
 
-    // Delete category
     public function deleteCategory()
     {
         $cat = Category::find($this->deleteId);
@@ -157,7 +174,6 @@ class CategoryList extends Component
         }
 
         $cat->delete();
-
         $this->dispatch('toast', type: 'success', message: 'Category deleted successfully.');
 
         $this->confirmDelete = false;
@@ -165,7 +181,7 @@ class CategoryList extends Component
         $this->deleteName = null;
     }
 
-    // Pagination reset
+    // Reset pagination when searching
     public function updatedSearch()
     {
         $this->resetPage();

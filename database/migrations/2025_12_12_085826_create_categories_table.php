@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('parent_id')->nullable();
             $table->string('name'); 
+            $table->string('image')->nullable();
             $table->string('slug')->unique();
+            $table->boolean('is_featured')->default(false);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
