@@ -956,7 +956,7 @@
         </section>
         <!-- end banner slider -->
         <!-- start section -->
-    
+
         <!-- end section -->
         <!-- start section -->
         <section>
@@ -964,7 +964,11 @@
                 <div class="row justify-content-center mb-4" data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <div class="col-xl-5 col-lg-6 col-md-8 text-center last-paragraph-no-margin">
                         <h3 class="fw-500 ls-minus-1px text-dark-gray mb-10px">Shop by categories</h3>
-                        <p>Lorem ipsum dolor amet consectetur adipiscing dictum placerat diam in vestibulum vivamus in eros.</p>
+                        <p>
+                            Celebrate your loved ones with thoughtful gifts made to impress. Handpicked
+                            collections, elegant packaging, and timely delivery because every gift tells a
+                            story.
+                        </p>
                     </div>
                 </div>
                 <div class="row g-0">
